@@ -23,7 +23,7 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
         setTitle("Scheduled Check-Ins")
         recyclerview_view_scheduled_check_ins.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerview_view_scheduled_check_ins.adapter = adapter
-        pullSchedules()
+        pullSchedules() //pulls scheduled check-ins
     }
 
     private fun pullSchedules(){
