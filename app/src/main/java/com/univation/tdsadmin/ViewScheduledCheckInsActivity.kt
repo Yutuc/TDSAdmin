@@ -14,34 +14,40 @@ import kotlinx.android.synthetic.main.activity_view_scheduled_check_ins.*
 
 class ViewScheduledCheckInsActivity : AppCompatActivity() {
 
-    val schedulesArrayList = ArrayList<AdminScheduledTimeObject>()
+    val schedulesMap = HashMap<String, AdminScheduledTimeObject>()
     val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_scheduled_check_ins)
+        setTitle("Scheduled Check-Ins")
         recyclerview_view_scheduled_check_ins.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerview_view_scheduled_check_ins.adapter = adapter
-        pullAdminSchedules()
+        pullSchedules()
     }
 
-    private fun pullAdminSchedules(){
-        val ref = FirebaseDatabase.getInstance().getReference("/admin-check-ins")
+    private fun pullSchedules(){
+        val ref = FirebaseDatabase.getInstance().getReference("admin-check-ins")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val adminScheduledTimeObject = p0.getValue(AdminScheduledTimeObject::class.java)
                 if(adminScheduledTimeObject != null){
-                    schedulesArrayList.add(adminScheduledTimeObject)
+                    schedulesMap[p0.key!!] = adminScheduledTimeObject
                     refreshRecyclerView()
                 }
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-
+                schedulesMap.remove(p0.key!!)
+                refreshRecyclerView()
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
+                val adminScheduledTimeObject = p0.getValue(AdminScheduledTimeObject::class.java)
+                if(adminScheduledTimeObject != null){
+                    schedulesMap[p0.key!!] = adminScheduledTimeObject
+                    refreshRecyclerView()
+                }
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -52,11 +58,11 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
 
             }
         })
-    }//pullAdminSchedules function
+    }//pullSchedules function
 
     private fun refreshRecyclerView(){
         adapter.clear()
-        schedulesArrayList.forEach {
+        schedulesMap.values.forEach {
             adapter.add(ScheduledCheckInsRow(it))
         }
     }//refreshRecyclerView function
