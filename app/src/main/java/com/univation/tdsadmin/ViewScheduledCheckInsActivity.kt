@@ -26,7 +26,7 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
         pullSchedules()
     }
 
-    //CHECKING IF THE COMMIT ACTUALLY WORKS
+    //CHECKING IF THE COMMIT ACTUALLY WORKS!
 
     private fun pullSchedules(){
         val ref = FirebaseDatabase.getInstance().getReference("admin-check-ins")
