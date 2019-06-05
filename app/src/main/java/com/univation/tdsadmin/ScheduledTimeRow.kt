@@ -1,6 +1,5 @@
 package com.univation.tdsadmin
 
-import android.util.Log
 import android.view.View
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

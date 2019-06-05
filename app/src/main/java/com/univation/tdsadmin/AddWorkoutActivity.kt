@@ -19,6 +19,13 @@ class AddWorkoutActivity : AppCompatActivity() {
 
     companion object {
         val USER_KEY = "USER_KEY"
+
+        val WORKOUT_EXERCISE_KEY = "WORKOUT_EXERCISE_KEY"
+        val WORKOUT_EXERCISE_POSITION = "WORKOUT_EXERCISE_POSITION"
+
+        val WARMUP_EXERCISE_KEY = "WARMUP_EXERCISE_KEY"
+        val WARMUP_EXERCISE_POSITION = " WARMUP_EXERCISE_POSITION"
+
         val WORKOUT_ARRAY_LIST = "WORKOUT_ARRAY_LIST"
         val WARMUP_ARRAY_LIST = "WARMUP_ARRAY_LIST"
 
@@ -57,10 +64,38 @@ class AddWorkoutActivity : AppCompatActivity() {
             intent.putParcelableArrayListExtra(WARMUP_ARRAY_LIST, warmupArrayList)
             startActivity(intent)
         }
+
+        workoutCardAdapter.setOnItemLongClickListener { item, view ->
+            val workoutClicked = item as WorkoutExerciseRow
+            editWorkout(workoutClicked)
+            true
+        }
+
+        warmupCardAdapter.setOnItemLongClickListener { item, view ->
+            val warmupClicked = item as WarmupExerciseRow
+            editWarmup(warmupClicked)
+            true
+        }
     }//onCreate function
 
+    private fun editWorkout(workoutClicked: WorkoutExerciseRow){
+        val intent = Intent(this, InputWorkoutExerciseActivity::class.java)
+        intent.putExtra(WORKOUT_EXERCISE_KEY, workoutClicked.exerciseObject)
+        intent.putExtra(WORKOUT_EXERCISE_POSITION, workoutCardAdapter.getAdapterPosition(workoutClicked)-1)
+        intent.putParcelableArrayListExtra(WORKOUT_ARRAY_LIST, workoutArrayList)
+        startActivity(intent)
+    }//editWorkout function
+
+    private fun editWarmup(warmupClicked: WarmupExerciseRow){
+        val intent = Intent(this, InputWarmupExerciseActivity::class.java)
+        intent.putExtra(WARMUP_EXERCISE_KEY, warmupClicked.exerciseObject)
+        intent.putExtra(WARMUP_EXERCISE_POSITION, warmupCardAdapter.getAdapterPosition(warmupClicked)-1)
+        intent.putParcelableArrayListExtra(WARMUP_ARRAY_LIST, warmupArrayList)
+        startActivity(intent)
+    }//editWarmup function
+
     private fun refreshWorkoutRecycler(){
-        val updatedWorkoutArrayList = intent.getParcelableArrayListExtra<WorkoutExerciseObject>(InputWorkoutExerciseActivity.WORKOUT_ARRAY_LIST)
+        val updatedWorkoutArrayList = intent.getParcelableArrayListExtra<WorkoutExerciseObject>(WORKOUT_ARRAY_LIST)
         if(updatedWorkoutArrayList != null) {
             workoutArrayList = updatedWorkoutArrayList
         }
@@ -73,7 +108,7 @@ class AddWorkoutActivity : AppCompatActivity() {
     }//refreshWorkoutRecycler function
 
     private fun refreshWarmupRecycler(){
-        val updatedWarmupArrayList = intent.getParcelableArrayListExtra<WarmupExerciseObject>(InputWarmupExerciseActivity.WARMUP_ARRAY_LIST)
+        val updatedWarmupArrayList = intent.getParcelableArrayListExtra<WarmupExerciseObject>(WARMUP_ARRAY_LIST)
         if(updatedWarmupArrayList != null) {
             warmupArrayList = updatedWarmupArrayList
         }

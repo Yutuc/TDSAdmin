@@ -15,6 +15,9 @@
                     android:value=".ChooseActionActivity"/>
         </activity>
         <activity android:name=".InputWarmupExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".AddWorkoutActivity"/>
         </activity>
         <activity android:name=".InputWorkoutExerciseActivity">
             <meta-data
