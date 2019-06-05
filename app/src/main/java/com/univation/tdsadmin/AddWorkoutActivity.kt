@@ -105,10 +105,6 @@ class AddWorkoutActivity : AppCompatActivity() {
         pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "")))
 
         Toast.makeText(this, "Successfully saved to user", Toast.LENGTH_SHORT).show()
-        workoutArrayList.clear()
-        warmupArrayList.clear()
-        refreshWorkoutRecycler()
-        refreshWarmupRecycler()
         dateChosen = ""
     }//saveToUser function
 

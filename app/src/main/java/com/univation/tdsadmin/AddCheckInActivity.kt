@@ -60,7 +60,8 @@ class AddCheckInActivity : AppCompatActivity() {
                     selectedTime.set(Calendar.MINUTE, minute)
                     timeChosen = timeFormat.format(selectedTime.time).toUpperCase()
                     if(!timeChosen.isEmpty()){
-                        timeArrayList.add(CheckInTimeAdapter(AvailableTimeObject(timeArrayList.size,"", timeChosen, "")))
+                        timeArrayList.add(CheckInTimeAdapter(ScheduledTimeObject(timeArrayList.size,"",
+                            dateChosen, timeChosen, "")))
                         refreshRecyclerView()
                         timeChosen = ""
                     }

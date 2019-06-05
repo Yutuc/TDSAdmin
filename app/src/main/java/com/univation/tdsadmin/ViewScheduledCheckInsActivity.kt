@@ -9,45 +9,34 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_view_scheduled_check_ins.*
 
 class ViewScheduledCheckInsActivity : AppCompatActivity() {
 
-    val schedulesMap = HashMap<String, AdminScheduledTimeObject>()
+    val checkinPagesArrayList = ArrayList<CheckInPageObject>()
     val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_scheduled_check_ins)
         setTitle("Scheduled Check-Ins")
-        recyclerview_view_scheduled_check_ins.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerview_view_scheduled_check_ins.adapter = adapter
-        pullSchedules() //pulls scheduled check-ins
+        pullDate()
     }
 
-    private fun pullSchedules(){
-        val ref = FirebaseDatabase.getInstance().getReference("admin-check-ins")
+    private fun pullDate(){
+        val ref = FirebaseDatabase.getInstance().getReference("/check-in-page")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                val adminScheduledTimeObject = p0.getValue(AdminScheduledTimeObject::class.java)
-                if(adminScheduledTimeObject != null){
-                    schedulesMap[p0.key!!] = adminScheduledTimeObject
-                    refreshRecyclerView()
-                }
+                pullTimes(p0.key!!)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-                schedulesMap.remove(p0.key!!)
-                refreshRecyclerView()
+
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                val adminScheduledTimeObject = p0.getValue(AdminScheduledTimeObject::class.java)
-                if(adminScheduledTimeObject != null){
-                    schedulesMap[p0.key!!] = adminScheduledTimeObject
-                    refreshRecyclerView()
-                }
+
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -58,12 +47,43 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
 
             }
         })
-    }//pullSchedules function
+    }//pullDate function
+
+    private fun pullTimes(date: String){
+        val ref = FirebaseDatabase.getInstance().getReference("check-in-page/$date")
+        val timesArrayList = ArrayList<ScheduledTimeObject>()
+        ref.addChildEventListener(object: ChildEventListener{
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                val time = p0.getValue(ScheduledTimeObject::class.java)
+                timesArrayList.add(time!!)
+                refreshRecyclerView()
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                val time = p0.getValue(ScheduledTimeObject::class.java)
+                timesArrayList.set(time?.position!!, time!!)
+                refreshRecyclerView()
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+
+            }
+        })
+        checkinPagesArrayList.add(CheckInPageObject(date, timesArrayList))
+    }//pullTimes function
 
     private fun refreshRecyclerView(){
         adapter.clear()
-        schedulesMap.values.forEach {
-            adapter.add(ScheduledCheckInsRow(it))
+        checkinPagesArrayList.forEach {
+            adapter.add(VerticalRecyclerViewCheckIn(it))
         }
     }//refreshRecyclerView function
 }
