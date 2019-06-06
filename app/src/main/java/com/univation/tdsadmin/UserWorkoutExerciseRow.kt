@@ -13,7 +13,13 @@ class UserWorkoutExerciseRow(val context: Context, val inflater: LayoutInflater,
         viewHolder.itemView.sets_textview_workout.text = workoutExerciseObject.sets
         viewHolder.itemView.reps_textview_workout.text = workoutExerciseObject.reps
         viewHolder.itemView.rpe_textview_workout.text = workoutExerciseObject.rpe
-        viewHolder.itemView.weight_input_workout.text = workoutExerciseObject.weight
+
+        if(workoutExerciseObject.weight.isEmpty()){
+            viewHolder.itemView.weight_input_workout.text = "lbs"
+        }
+        else{
+            viewHolder.itemView.weight_input_workout.text = workoutExerciseObject.weight
+        }
 
         viewHolder.itemView.weight_input_workout.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
