@@ -135,7 +135,6 @@ class ChooseUserActivity : AppCompatActivity() {
                 }
             })
         }
-
         return super.onCreateOptionsMenu(menu)
     }
 }
