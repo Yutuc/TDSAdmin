@@ -20,6 +20,7 @@ class ChooseUserActivity : AppCompatActivity() {
         val adapter = GroupAdapter<ViewHolder>()
         var usersMap = HashMap<String, UserObject>()
         var usersMapCopy = HashMap<String, UserObject>()
+        var userChosen: UserObject? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +35,8 @@ class ChooseUserActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener { item, view ->
             val userClicked = item as UserRow
-            val intent = Intent(view.context, AddWorkoutActivity::class.java)
+            val intent = Intent(this, AddWorkoutActivity::class.java)
+            userChosen = userClicked.user
             intent.putExtra(USER_KEY, userClicked.user) //sends data(User object) from NewMessageActivity to ChatLogActivity
             startActivity(intent)
         }

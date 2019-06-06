@@ -33,6 +33,7 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
     private fun editExerciseInWarmupArrayList(){
         val warmupArrayList = intent.getParcelableArrayListExtra<WarmupExerciseObject>(AddWorkoutActivity.WARMUP_ARRAY_LIST)
         val exercisePosition = intent.getIntExtra(AddWorkoutActivity.WARMUP_EXERCISE_POSITION, -1)
+
         if(exercisePosition != -1){
             val exerciseName = exercise_name_input_warmup.text.toString()
             val sets = sets_input_warmup.text.toString()

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_input_workout_exercise.*
@@ -35,6 +36,7 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
     private fun editExerciseInWorkoutArrayList(){
         val workoutArrayList = intent.getParcelableArrayListExtra<WorkoutExerciseObject>(AddWorkoutActivity.WORKOUT_ARRAY_LIST)
         val exercisePosition = intent.getIntExtra(AddWorkoutActivity.WORKOUT_EXERCISE_POSITION, -1)
+
         if(exercisePosition != -1){
             val exerciseName = exercise_name_input_workout.text.toString()
             val sets = sets_input_workout.text.toString()

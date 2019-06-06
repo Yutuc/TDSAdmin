@@ -43,7 +43,7 @@ class AddWorkoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_workout)
         setTitle("Add workout")
 
-        val userChosen = intent.getParcelableExtra<UserObject>(ChooseUserActivity.USER_KEY)
+        val userChosen = intent.getParcelableExtra<UserObject>(USER_KEY)
 
         refreshWorkoutRecycler()
         refreshWarmupRecycler()
@@ -67,27 +67,29 @@ class AddWorkoutActivity : AppCompatActivity() {
 
         workoutCardAdapter.setOnItemLongClickListener { item, view ->
             val workoutClicked = item as WorkoutExerciseRow
-            editWorkout(workoutClicked)
+            editWorkout(userChosen, workoutClicked)
             true
         }
 
         warmupCardAdapter.setOnItemLongClickListener { item, view ->
             val warmupClicked = item as WarmupExerciseRow
-            editWarmup(warmupClicked)
+            editWarmup(userChosen, warmupClicked)
             true
         }
     }//onCreate function
 
-    private fun editWorkout(workoutClicked: WorkoutExerciseRow){
+    private fun editWorkout(userChosen: UserObject, workoutClicked: WorkoutExerciseRow){
         val intent = Intent(this, InputWorkoutExerciseActivity::class.java)
+        intent.putExtra(USER_KEY, userChosen)
         intent.putExtra(WORKOUT_EXERCISE_KEY, workoutClicked.exerciseObject)
         intent.putExtra(WORKOUT_EXERCISE_POSITION, workoutCardAdapter.getAdapterPosition(workoutClicked)-1)
         intent.putParcelableArrayListExtra(WORKOUT_ARRAY_LIST, workoutArrayList)
         startActivity(intent)
     }//editWorkout function
 
-    private fun editWarmup(warmupClicked: WarmupExerciseRow){
+    private fun editWarmup(userChosen: UserObject, warmupClicked: WarmupExerciseRow){
         val intent = Intent(this, InputWarmupExerciseActivity::class.java)
+        intent.putExtra(USER_KEY, userChosen)
         intent.putExtra(WARMUP_EXERCISE_KEY, warmupClicked.exerciseObject)
         intent.putExtra(WARMUP_EXERCISE_POSITION, warmupCardAdapter.getAdapterPosition(warmupClicked)-1)
         intent.putParcelableArrayListExtra(WARMUP_ARRAY_LIST, warmupArrayList)
@@ -134,9 +136,9 @@ class AddWorkoutActivity : AppCompatActivity() {
             return
         }
 
-        val userChosen = intent.getParcelableExtra<UserObject>(ChooseUserActivity.USER_KEY)
+        val userChosen = ChooseUserActivity.userChosen
 
-        val pageRef = FirebaseDatabase.getInstance().getReference("/workout-page/${userChosen.uid}").push()
+        val pageRef = FirebaseDatabase.getInstance().getReference("/workout-page/${userChosen?.uid}").push()
         pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "")))
 
         Toast.makeText(this, "Successfully saved to user", Toast.LENGTH_SHORT).show()
