@@ -1,5 +1,6 @@
 package com.univation.tdsadmin
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.database.ChildEventListener
@@ -12,6 +13,10 @@ import kotlinx.android.synthetic.main.activity_view_scheduled_check_ins.*
 
 class ViewScheduledCheckInsActivity : AppCompatActivity() {
 
+    companion object {
+        val USER_UID = "USER_UID"
+    }
+
     val checkinPagesArrayList = ArrayList<CheckInPageObject>()
     val adapter = GroupAdapter<ViewHolder>()
 
@@ -20,14 +25,14 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_scheduled_check_ins)
         setTitle("Scheduled Check-Ins")
         recyclerview_view_scheduled_check_ins.adapter = adapter
-        pullDate()
+        pullDate(this)
     }
 
-    private fun pullDate(){
+    private fun pullDate(context: Context){
         val ref = FirebaseDatabase.getInstance().getReference("/check-in-page")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                pullTimes(p0.key!!)
+                pullTimes(context, p0.key!!)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
@@ -48,14 +53,14 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
         })
     }//pullDate function
 
-    private fun pullTimes(date: String){
+    private fun pullTimes(context: Context, date: String){
         val ref = FirebaseDatabase.getInstance().getReference("check-in-page/$date")
         val timesArrayList = ArrayList<ScheduledTimeObject>()
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val time = p0.getValue(ScheduledTimeObject::class.java)
                 timesArrayList.add(time!!)
-                refreshRecyclerView()
+                refreshRecyclerView(context!!)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
@@ -65,7 +70,7 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
                 val time = p0.getValue(ScheduledTimeObject::class.java)
                 timesArrayList.set(time?.position!!, time!!)
-                refreshRecyclerView()
+                refreshRecyclerView(context!!)
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -79,10 +84,10 @@ class ViewScheduledCheckInsActivity : AppCompatActivity() {
         checkinPagesArrayList.add(CheckInPageObject(date, timesArrayList))
     }//pullTimes function
 
-    private fun refreshRecyclerView(){
+    private fun refreshRecyclerView(context: Context){
         adapter.clear()
         checkinPagesArrayList.forEach {
-            adapter.add(VerticalRecyclerViewCheckIn(it))
+            adapter.add(VerticalRecyclerViewCheckIn(context, it))
         }
     }//refreshRecyclerView function
 }
