@@ -8,47 +8,56 @@
         tools:context=".InputWorkoutExerciseActivity">
 
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/exercise_name_input_workout" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toTopOf="parent" android:hint="Exercise name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/sets_input_workout" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/exercise_name_input_workout" android:hint="# of sets"
+            app:layout_constraintTop_toBottomOf="@+id/exercise_name_input_workout"
+            android:id="@+id/sets_input_workout"
+            android:hint="# of sets"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"/>
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/reps_input_workout" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/sets_input_workout" android:hint="# of reps"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/sets_input_workout"
+            app:layout_constraintEnd_toEndOf="@+id/sets_input_workout"/>
     <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/rpe_input_workout" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/reps_input_workout" android:hint="RPE"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/reps_input_workout"
+            app:layout_constraintEnd_toEndOf="@+id/reps_input_workout"/>
     <Button
             android:text="Add exercise"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/add_exercise_button_workout" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/rpe_input_workout"
+            android:id="@+id/add_exercise_button_workout"
             app:layout_constraintStart_toStartOf="@+id/rpe_input_workout"
-            app:layout_constraintEnd_toEndOf="@+id/rpe_input_workout"/>
+            app:layout_constraintEnd_toEndOf="@+id/rpe_input_workout"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/workout_type_spinner_workout"/>
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/workout_type_spinner_workout" app:layout_constraintStart_toStartOf="@+id/rpe_input_workout"
+            app:layout_constraintEnd_toEndOf="@+id/rpe_input_workout" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/rpe_input_workout"/>
+    <TextView
+            android:text="Click to select exercise"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/exercise_name_input_workout" app:layout_constraintStart_toStartOf="@+id/sets_input_workout"
+            app:layout_constraintEnd_toEndOf="@+id/sets_input_workout" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"
+            android:textAlignment="center"
+            android:textStyle="bold"/>
 </android.support.constraint.ConstraintLayout>

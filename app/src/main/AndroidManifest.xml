@@ -9,6 +9,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ChooseWarmupExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".InputWarmupExerciseActivity"/>
+        </activity>
+        <activity android:name=".ChooseWorkoutExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".InputWorkoutExerciseActivity"/>
+        </activity>
         <activity android:name=".ViewUserWorkoutsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

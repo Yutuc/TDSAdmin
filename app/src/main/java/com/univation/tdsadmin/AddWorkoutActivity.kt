@@ -137,7 +137,7 @@ class AddWorkoutActivity : AppCompatActivity() {
         val userChosen = ChooseUserActivity.userChosen
 
         val pageRef = FirebaseDatabase.getInstance().getReference("/workout-page/${userChosen?.uid}").push()
-        pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "")))
+        pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "","")))
 
         Toast.makeText(this, "Successfully saved to user", Toast.LENGTH_SHORT).show()
         dateChosen = ""

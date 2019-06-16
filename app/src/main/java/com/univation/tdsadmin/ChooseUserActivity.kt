@@ -62,7 +62,7 @@ class ChooseUserActivity : AppCompatActivity() {
         ref.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val newUser = p0.getValue(UserObject::class.java)
-                if(newUser != null && currentUser != newUser.uid){
+                if(newUser != null){
                     usersMap[p0.key!!] = newUser
                     usersMapCopy[p0.key!!] = newUser
                     refreshRecyclerView(usersMap)
@@ -71,7 +71,7 @@ class ChooseUserActivity : AppCompatActivity() {
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
                 val changedUser = p0.getValue(UserObject::class.java)
-                if(changedUser != null && currentUser != changedUser.uid){
+                if(changedUser != null){
                     usersMap[p0.key!!] = changedUser
                     usersMapCopy[p0.key!!] = changedUser
                     refreshRecyclerView(usersMap)
