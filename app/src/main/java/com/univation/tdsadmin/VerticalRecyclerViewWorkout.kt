@@ -7,7 +7,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.workout_vertical_recyclerview.view.*
 
-class VerticalRecyclerViewObjectWorkout(val context: Context, val inflater: LayoutInflater, val workoutPageObject: WorkoutPageObject): Item<ViewHolder>(){
+class VerticalRecyclerViewWorkout(val context: Context, val inflater: LayoutInflater, val workoutPageObject: WorkoutPageObject): Item<ViewHolder>(){
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val verticalAdapter = GroupAdapter<ViewHolder>()

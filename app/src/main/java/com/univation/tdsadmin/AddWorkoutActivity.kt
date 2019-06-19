@@ -43,7 +43,7 @@ class AddWorkoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_workout)
         setTitle("Add workout")
 
-        val userChosen = intent.getParcelableExtra<UserObject>(USER_KEY)
+        val userChosen = ChooseUserForWorkoutsActivity.userChosen
 
         refreshWorkoutRecycler()
         refreshWarmupRecycler()
@@ -82,7 +82,6 @@ class AddWorkoutActivity : AppCompatActivity() {
         val intent = Intent(this, InputWorkoutExerciseActivity::class.java)
         intent.putExtra(WORKOUT_EXERCISE_KEY, workoutClicked.exerciseObject)
         intent.putExtra(WORKOUT_EXERCISE_POSITION, workoutCardAdapter.getAdapterPosition(workoutClicked)-1)
-        intent.putParcelableArrayListExtra(WORKOUT_ARRAY_LIST, workoutArrayList)
         startActivity(intent)
     }//editWorkout function
 
@@ -90,7 +89,6 @@ class AddWorkoutActivity : AppCompatActivity() {
         val intent = Intent(this, InputWarmupExerciseActivity::class.java)
         intent.putExtra(WARMUP_EXERCISE_KEY, warmupClicked.exerciseObject)
         intent.putExtra(WARMUP_EXERCISE_POSITION, warmupCardAdapter.getAdapterPosition(warmupClicked)-1)
-        intent.putParcelableArrayListExtra(WARMUP_ARRAY_LIST, warmupArrayList)
         startActivity(intent)
     }//editWarmup function
 
@@ -134,7 +132,7 @@ class AddWorkoutActivity : AppCompatActivity() {
             return
         }
 
-        val userChosen = ChooseUserActivity.userChosen
+        val userChosen = ChooseUserForWorkoutsActivity.userChosen
 
         val pageRef = FirebaseDatabase.getInstance().getReference("/workout-page/${userChosen?.uid}").push()
         pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "","")))

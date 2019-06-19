@@ -10,33 +10,31 @@ import kotlinx.android.synthetic.main.activity_choose_action.*
 
 class ChooseActionActivity : AppCompatActivity() {
 
-    companion object{
-        val USER_KEY = "USER_KEY"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_action)
 
         setTitle("Choose action")
+        verifyUserIsLoggedIn()
 
-        val userChosen = intent.getParcelableExtra<UserObject>(ChooseUserActivity.USER_KEY)
         add_workout_button.setOnClickListener {
-            val intent = Intent(this, ChooseUserActivity::class.java)
-            intent.putExtra(USER_KEY, userChosen)
-            startActivity(intent)
-        }
-        add_check_in_button.setOnClickListener {
-            val intent = Intent(this, AddCheckInActivity::class.java)
-            intent.putExtra(USER_KEY, userChosen)
+            val intent = Intent(this, ChooseUserForWorkoutsActivity::class.java)
             startActivity(intent)
         }
 
-        view_scheduled_check_ins_button.setOnClickListener {
-            val intent = Intent(this, ViewScheduledCheckInsActivity::class.java)
+        view_check_ins_button.setOnClickListener {
+            val intent = Intent(this, ChooseUserForCheckInsActivity::class.java)
             startActivity(intent)
         }
     }
+
+    private fun verifyUserIsLoggedIn(){
+        if(FirebaseAuth.getInstance().uid == null){
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //clears the stack of activities
+            startActivity(intent)
+        }
+    }//verifyUserIsLoggedIn method
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {

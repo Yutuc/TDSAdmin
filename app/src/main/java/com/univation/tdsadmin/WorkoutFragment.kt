@@ -148,7 +148,7 @@ class WorkoutFragment : Fragment() {
     private fun refreshRecyclerView(context: Context, inflater: LayoutInflater){
         adapter.clear()
         workoutPagesArrayList.forEach {
-            adapter.add(VerticalRecyclerViewObjectWorkout(context, inflater, it))
+            adapter.add(VerticalRecyclerViewWorkout(context, inflater, it))
         }
     }//refreshRecyclerView function
 }

@@ -4,7 +4,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.choose_exercise_recyclerview_row.view.*
 
-class ChooseExerciseRecyclerviewRow(val exerciseDatabaseObject: ExerciseDatabaseObject): Item<ViewHolder>(){
+class ChooseExerciseRow(val exerciseDatabaseObject: ExerciseDatabaseObject): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.exercise_name_choose_exercise_recyclerview_row.text = exerciseDatabaseObject.exerciseName
     }

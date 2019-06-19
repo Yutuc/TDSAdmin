@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener
 class ViewUserWorkoutsActivity : AppCompatActivity() {
 
     companion object {
+        val USER_UID = "USER_UID"
         var uid = ""
         var userName = ""
     }
@@ -19,7 +20,7 @@ class ViewUserWorkoutsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_user_workouts)
 
-        uid = intent.getStringExtra(ViewScheduledCheckInsActivity.USER_UID)
+        uid = intent.getStringExtra(USER_UID)
         pullUserName()
         displayFragment(WorkoutFragment())
     }

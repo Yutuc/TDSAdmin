@@ -16,21 +16,12 @@
             android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"/>
     <Button
-            android:text="Add check-in"
+            android:text="View Check-Ins"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/add_check_in_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintTop_toBottomOf="@+id/add_workout_button" android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp" android:layout_marginEnd="16dp"/>
-    <Button
-            android:text="View Scheduled Check-Ins"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/view_scheduled_check_ins_button" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/add_check_in_button"
-            app:layout_constraintStart_toStartOf="@+id/add_check_in_button"
-            app:layout_constraintEnd_toEndOf="@+id/add_check_in_button"/>
+            android:id="@+id/view_check_ins_button"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/add_workout_button"
+            app:layout_constraintStart_toStartOf="@+id/add_workout_button"
+            app:layout_constraintEnd_toEndOf="@+id/add_workout_button"/>
 </android.support.constraint.ConstraintLayout>

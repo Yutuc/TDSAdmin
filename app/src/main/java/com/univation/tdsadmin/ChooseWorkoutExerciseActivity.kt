@@ -38,14 +38,14 @@ class ChooseWorkoutExerciseActivity : AppCompatActivity() {
         recyclerview_choose_workout_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         adapter.setOnItemClickListener { item, view ->
-            val exerciseRecyclerviewRowItem = item as ChooseExerciseRecyclerviewRow
+            val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
             val intent = Intent(this, InputWorkoutExerciseActivity::class.java)
             intent.putExtra(InputWorkoutExerciseActivity.EXERCISE_OBJECT, exerciseRecyclerviewRowItem.exerciseDatabaseObject)
             startActivity(intent)
         }
 
         adapter.setOnItemLongClickListener { item, view ->
-            val exerciseRecyclerviewRowItem = item as ChooseExerciseRecyclerviewRow
+            val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
 
             val dialogBuilder = AlertDialog.Builder(this)
             val dialogView = layoutInflater.inflate(R.layout.add_exercise_alert_dialog, null)
@@ -112,7 +112,7 @@ class ChooseWorkoutExerciseActivity : AppCompatActivity() {
     private fun refreshRecyclerView(exerciseMap: HashMap<String, ExerciseDatabaseObject>){
         adapter.clear()
         exerciseMap.values.forEach {
-            adapter.add(ChooseExerciseRecyclerviewRow(it))
+            adapter.add(ChooseExerciseRow(it))
         }
     }//refreshRecyclerView function
 

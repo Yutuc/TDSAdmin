@@ -8,12 +8,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_input_warmup_exercise.*
-import kotlinx.android.synthetic.main.activity_input_workout_exercise.*
 
 class InputWarmupExerciseActivity : AppCompatActivity() {
 
     companion object {
         val EXERCISE_OBJECT = "EXERCISE_OBJECT"
+        val WARMUP_EXERCISE_KEY = "WARMUP_EXERCISE_KEY"
     }
 
     val spinnerOptionsArray = arrayOf("Main", "Accessory", "Core", "Cardiovascular")
@@ -65,7 +65,7 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
     }
 
     private fun editExerciseInWarmupArrayList(){
-        val warmupArrayList = intent.getParcelableArrayListExtra<WarmupExerciseObject>(AddWorkoutActivity.WARMUP_ARRAY_LIST)
+        val warmupArrayList = AddWorkoutActivity.warmupArrayList
         val exercisePosition = intent.getIntExtra(AddWorkoutActivity.WARMUP_EXERCISE_POSITION, -1)
 
         if(exercisePosition != -1){
@@ -74,13 +74,14 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
             val reps = reps_input_warmup.text.toString()
             val rpe = rpe_input_warmup.text.toString()
 
-            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty()){
+            val exerciseDatabaseObject = intent.getParcelableExtra<WarmupExerciseObject>(WARMUP_EXERCISE_KEY)
+
+            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || exerciseDatabaseObject.url.isEmpty()){
                 Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
                 return
             }
 
-            val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(InputWorkoutExerciseActivity.EXERCISE_OBJECT)
-            warmupArrayList.set(exercisePosition, WarmupExerciseObject(exerciseName, sets, reps, rpe, type, exerciseDatabaseObject.videoUrl))
+            warmupArrayList.set(exercisePosition, WarmupExerciseObject(exerciseName, sets, reps, rpe, type, exerciseDatabaseObject.url))
             val intent  = Intent(this, AddWorkoutActivity::class.java)
             intent.putParcelableArrayListExtra(AddWorkoutActivity.WARMUP_ARRAY_LIST, warmupArrayList)
             startActivity(intent)
@@ -89,19 +90,20 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
     }//editExerciseInWarmupArrayList function
 
     private fun addWarmupToArrayList(){
-        val warmupArrayList = intent.getParcelableArrayListExtra<WarmupExerciseObject>(AddWorkoutActivity.WARMUP_ARRAY_LIST)
+        val warmupArrayList = AddWorkoutActivity.warmupArrayList
 
         val exerciseName = exercise_name_input_warmup.text.toString()
         val sets = sets_input_warmup.text.toString()
         val reps = reps_input_warmup.text.toString()
         val rpe = rpe_input_warmup.text.toString()
 
-        if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty()){
+        val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(EXERCISE_OBJECT)
+
+        if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || exerciseDatabaseObject == null){
             Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(InputWorkoutExerciseActivity.EXERCISE_OBJECT)
         warmupArrayList.add(WarmupExerciseObject(exerciseName, sets, reps, rpe, type, exerciseDatabaseObject.videoUrl))
         val intent  = Intent(this, AddWorkoutActivity::class.java)
         intent.putParcelableArrayListExtra(AddWorkoutActivity.WARMUP_ARRAY_LIST, warmupArrayList)

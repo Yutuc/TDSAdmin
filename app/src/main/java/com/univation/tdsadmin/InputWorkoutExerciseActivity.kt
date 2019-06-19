@@ -3,6 +3,7 @@ package com.univation.tdsadmin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,6 +14,7 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
 
     companion object {
         val EXERCISE_OBJECT = "EXERCISE_OBJECT"
+        val WORKOUT_EXERCISE_KEY = "WORKOUT_EXERCISE_KEY"
     }
 
     val spinnerOptionsArray = arrayOf("Main", "Accessory", "Core", "Cardiovascular")
@@ -33,6 +35,9 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
             sets_input_workout.setText(exerciseObject.sets)
             reps_input_workout.setText(exerciseObject.reps)
             rpe_input_workout.setText(exerciseObject.rpe)
+            workout_type_spinner_workout.post {
+                workout_type_spinner_workout.setSelection(spinnerOptionsArray.indexOf(exerciseObject.type))
+            }
         }
 
         add_exercise_button_workout.setOnClickListener {
@@ -52,7 +57,7 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                //when nothing is selected yet
+
             }
 
         }
@@ -64,7 +69,7 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
     }
 
     private fun editExerciseInWorkoutArrayList(){
-        val workoutArrayList = intent.getParcelableArrayListExtra<WorkoutExerciseObject>(AddWorkoutActivity.WORKOUT_ARRAY_LIST)
+        val workoutArrayList = AddWorkoutActivity.workoutArrayList
         val exercisePosition = intent.getIntExtra(AddWorkoutActivity.WORKOUT_EXERCISE_POSITION, -1)
 
         if(exercisePosition != -1){
@@ -73,14 +78,14 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
             val reps = reps_input_workout.text.toString()
             val rpe = rpe_input_workout.text.toString()
 
-            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || type.isEmpty()){
+            val exerciseDatabaseObject = intent.getParcelableExtra<WorkoutExerciseObject>(WORKOUT_EXERCISE_KEY)
+
+            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || type.isEmpty() || exerciseDatabaseObject.url.isEmpty()){
                 Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
                 return
             }
 
-
-            val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(EXERCISE_OBJECT)
-            workoutArrayList.set(exercisePosition, WorkoutExerciseObject(workoutArrayList.size.toString(), exerciseName, sets, reps, rpe, "", type, exerciseDatabaseObject.videoUrl))
+            workoutArrayList.set(exercisePosition, WorkoutExerciseObject(exercisePosition.toString(), exerciseName, sets, reps, rpe, "", type, exerciseDatabaseObject.url))
             val intent  = Intent(this, AddWorkoutActivity::class.java)
             intent.putParcelableArrayListExtra(AddWorkoutActivity.WORKOUT_ARRAY_LIST, workoutArrayList)
             startActivity(intent)
@@ -89,19 +94,20 @@ class InputWorkoutExerciseActivity : AppCompatActivity() {
     }//editExerciseInWorkoutArrayList function
 
     private fun addToWorkoutArrayList(){
-        val workoutArrayList = intent.getParcelableArrayListExtra<WorkoutExerciseObject>(AddWorkoutActivity.WORKOUT_ARRAY_LIST)
+        val workoutArrayList = AddWorkoutActivity.workoutArrayList
 
         val exerciseName = exercise_name_input_workout.text.toString()
         val sets = sets_input_workout.text.toString()
         val reps = reps_input_workout.text.toString()
         val rpe = rpe_input_workout.text.toString()
 
-        if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || type.isEmpty()){
+        val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(EXERCISE_OBJECT)
+
+        if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || rpe.isEmpty() || type.isEmpty() || exerciseDatabaseObject == null){
             Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val exerciseDatabaseObject = intent.getParcelableExtra<ExerciseDatabaseObject>(EXERCISE_OBJECT)
         workoutArrayList.add(WorkoutExerciseObject(workoutArrayList.size.toString(), exerciseName, sets, reps, rpe, "", type, exerciseDatabaseObject.videoUrl))
         val intent  = Intent(this, AddWorkoutActivity::class.java)
         intent.putParcelableArrayListExtra(AddWorkoutActivity.WORKOUT_ARRAY_LIST, workoutArrayList)

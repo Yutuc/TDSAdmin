@@ -7,16 +7,14 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.widget.EditText
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_choose_user_for_workouts.*
 
-class ChooseUserActivity : AppCompatActivity() {
+class ChooseUserForWorkoutsActivity : AppCompatActivity() {
 
     companion object {
-        val USER_KEY = "USER_KEY"
         val adapter = GroupAdapter<ViewHolder>()
         var usersMap = HashMap<String, UserObject>()
         var usersMapCopy = HashMap<String, UserObject>()
@@ -25,7 +23,7 @@ class ChooseUserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_choose_user_for_workouts)
 
         AddWorkoutActivity.workoutArrayList.clear()
         AddWorkoutActivity.warmupArrayList.clear()
@@ -37,27 +35,16 @@ class ChooseUserActivity : AppCompatActivity() {
             val userClicked = item as UserRow
             val intent = Intent(this, AddWorkoutActivity::class.java)
             userChosen = userClicked.user
-            intent.putExtra(USER_KEY, userClicked.user) //sends data(User object) from NewMessageActivity to ChatLogActivity
             startActivity(intent)
         }
 
-        recyclerview_main.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerview_main.adapter = adapter
+        recyclerview_choose_user_for_workouts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerview_choose_user_for_workouts.adapter = adapter
 
-        verifyUserIsLoggedIn()
         pullUsers()
     }
 
-    private fun verifyUserIsLoggedIn(){
-        if(FirebaseAuth.getInstance().uid == null){
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //clears the stack of activities
-            startActivity(intent)
-        }
-    }//verifyUserIsLoggedIn method
-
     private fun pullUsers(){
-        val currentUser = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {

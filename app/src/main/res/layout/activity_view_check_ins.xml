@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ViewCheckInsActivity">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/check_in_scrollview"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:text="Last Updated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/last_updated_textview"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="24sp" android:textAlignment="center"/>
+            <TextView
+                    android:text="How was training this week?"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/last_updated_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_one_textview"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp" android:textAlignment="center" android:textStyle="bold"/>
+            <TextView
+                    android:text="Question one answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_one_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_one_answer_textview"
+                    android:textSize="18sp" android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
+            <TextView
+                    android:text="How was your nutrition this week?"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/question_one_answer_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_two_textview"
+                    android:textSize="18sp" android:textStyle="bold" android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="Question two answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_two_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_two_answer_textview"
+                    android:textSize="18sp" android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/question_one_answer_textview"
+                    app:layout_constraintStart_toStartOf="@+id/question_one_answer_textview"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/question_two_answer_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_three_textview"
+                    android:text="Pros of the week? (Hit macros, New PR's, etc.)" android:textAlignment="center"
+                    android:textStyle="bold" android:textSize="18sp" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="Question three answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_three_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_three_answer_textview"
+                    android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="@+id/question_two_answer_textview"
+                    app:layout_constraintEnd_toEndOf="@+id/question_two_answer_textview" android:textSize="18sp"/>
+            <TextView
+                    android:text="Cons of the week?"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/question_three_answer_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_four_textview"
+                    android:textStyle="bold" android:textAlignment="center" android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="Question four answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_four_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_four_answer_textview"
+                    android:textAlignment="center" android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/question_three_answer_textview"
+                    app:layout_constraintStart_toStartOf="@+id/question_three_answer_textview"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/question_four_answer_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_five_textview"
+                    android:text="Is your training still challenging/enjoyable?" android:textAlignment="center"
+                    android:textStyle="bold" android:textSize="18sp" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="Question five answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_five_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_five_answer_textview"
+                    android:textSize="18sp" android:textAlignment="center"
+                    app:layout_constraintStart_toStartOf="@+id/question_four_answer_textview"
+                    app:layout_constraintEnd_toEndOf="@+id/question_four_answer_textview"
+            />
+            <TextView
+                    android:text="Any injuries/pain?"
+                    app:layout_constraintTop_toBottomOf="@+id/question_five_answer_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/question_six_textview"
+                    android:textStyle="bold" android:textAlignment="center" android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="8dp"/>
+            <TextView
+                    android:text="Question six answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_six_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_six_answer_textview"
+                    android:textAlignment="center" android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/question_five_answer_textview"
+                    app:layout_constraintEnd_toEndOf="@+id/question_five_answer_textview"/>
+            <TextView
+                    android:text="Any comments/questions?"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/question_six_answer_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_seven_textview"
+                    android:textStyle="bold" android:textSize="18sp" android:textAlignment="center"
+                    android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                    android:text="Question seven answer"
+                    android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/question_seven_textview"
+                    android:layout_height="wrap_content" android:id="@+id/question_seven_answer_textview"
+                    android:textAlignment="center" android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/question_six_answer_textview"
+                    app:layout_constraintEnd_toEndOf="@+id/question_six_answer_textview"/>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
