@@ -7,12 +7,15 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.widget.EditText
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_choose_user_for_workouts.*
+import kotlinx.android.synthetic.main.activity_choose_user_for_view_workout.*
 
-class ChooseUserForWorkoutsActivity : AppCompatActivity() {
+class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
 
     companion object {
         val adapter = GroupAdapter<ViewHolder>()
@@ -23,23 +26,19 @@ class ChooseUserForWorkoutsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_user_for_workouts)
-
-        AddWorkoutActivity.workoutArrayList.clear()
-        AddWorkoutActivity.warmupArrayList.clear()
-        AddWorkoutActivity.dateChosen = ""
+        setContentView(R.layout.activity_choose_user_for_view_workout)
 
         setTitle("Select user to add to")
 
         adapter.setOnItemClickListener { item, view ->
             val userClicked = item as UserRow
-            val intent = Intent(this, AddWorkoutActivity::class.java)
+            val intent = Intent(this, ViewUserWorkouts::class.java)
             userChosen = userClicked.user
             startActivity(intent)
         }
 
-        recyclerview_choose_user_for_workouts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerview_choose_user_for_workouts.adapter = adapter
+        recyclerview_choose_user_for_view_workouts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerview_choose_user_for_view_workouts.adapter = adapter
 
         pullUsers()
     }

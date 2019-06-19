@@ -13,9 +13,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_choose_user_for_check_ins.*
+import kotlinx.android.synthetic.main.activity_choose_user_for_view_check_ins.*
 
-class ChooseUserForCheckInsActivity : AppCompatActivity() {
+class ChooseUserForViewCheckInsActivity : AppCompatActivity() {
 
     companion object {
         val adapter = GroupAdapter<ViewHolder>()
@@ -28,7 +28,7 @@ class ChooseUserForCheckInsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_user_for_check_ins)
+        setContentView(R.layout.activity_choose_user_for_view_check_ins)
 
         setTitle("Select user")
 

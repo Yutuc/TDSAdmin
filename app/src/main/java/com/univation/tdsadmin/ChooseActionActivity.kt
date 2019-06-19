@@ -18,12 +18,17 @@ class ChooseActionActivity : AppCompatActivity() {
         verifyUserIsLoggedIn()
 
         add_workout_button.setOnClickListener {
-            val intent = Intent(this, ChooseUserForWorkoutsActivity::class.java)
+            val intent = Intent(this, ChooseUserForAddWorkoutsActivity::class.java)
             startActivity(intent)
         }
 
         view_check_ins_button.setOnClickListener {
-            val intent = Intent(this, ChooseUserForCheckInsActivity::class.java)
+            val intent = Intent(this, ChooseUserForViewCheckInsActivity::class.java)
+            startActivity(intent)
+        }
+
+        view_workouts_button.setOnClickListener {
+            val intent = Intent(this, ChooseUserForViewWorkoutActivity::class.java)
             startActivity(intent)
         }
     }

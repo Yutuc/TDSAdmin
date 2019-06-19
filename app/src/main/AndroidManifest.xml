@@ -9,7 +9,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ChooseUserForCheckInsActivity">
+        <activity android:name=".ViewUserWorkouts">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseUserForViewWorkoutActivity"/>
+        </activity>
+        <activity android:name=".ChooseUserForViewWorkoutActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseActionActivity"/>
+        </activity>
+        <activity android:name=".ChooseUserForViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
@@ -17,7 +27,7 @@
         <activity android:name=".ViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForCheckInsActivity"/>
+                    android:value=".ChooseUserForViewCheckInsActivity"/>
         </activity>
         <activity android:name=".ChooseWarmupExerciseActivity">
             <meta-data
@@ -29,7 +39,7 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".InputWorkoutExerciseActivity"/>
         </activity>
-        <activity android:name=".ViewUserWorkoutsActivity">
+        <activity android:name=".ViewUserWorkoutsFromCheckInActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ViewCheckInsActivity"/>
@@ -49,14 +59,14 @@
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForWorkoutsActivity"/>
+                    android:value=".ChooseUserForAddWorkoutsActivity"/>
         </activity>
         <activity
                 android:name=".AddWorkoutActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForWorkoutsActivity"/>
+                    android:value=".ChooseUserForAddWorkoutsActivity"/>
         </activity>
         <activity
                 android:name=".ChooseActionActivity"
@@ -73,7 +83,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ChooseUserForWorkoutsActivity"
+                android:name=".ChooseUserForAddWorkoutsActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

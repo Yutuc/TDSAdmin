@@ -1,11 +1,12 @@
 package com.univation.tdsadmin
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.database.*
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_view_check_ins.*
 
 class ViewCheckInsActivity : AppCompatActivity() {
@@ -14,12 +15,12 @@ class ViewCheckInsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_check_ins)
 
-        setTitle("${ChooseUserForCheckInsActivity.userChosen?.firstName} ${ChooseUserForCheckInsActivity.userChosen?.lastName}'s Check-In")
+        setTitle("${ChooseUserForViewCheckInsActivity.userChosen?.firstName} ${ChooseUserForViewCheckInsActivity.userChosen?.lastName}'s Check-In")
         pullCheckIn()
     }
 
     private fun pullCheckIn(){
-        val ref = FirebaseDatabase.getInstance().getReference("/check-ins").child("${ChooseUserForCheckInsActivity.userChosen?.uid}")
+        val ref = FirebaseDatabase.getInstance().getReference("/check-ins").child("${ChooseUserForViewCheckInsActivity.userChosen?.uid}")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -40,7 +41,7 @@ class ViewCheckInsActivity : AppCompatActivity() {
     }//pullCheckIn function
 
     private fun displayCheckIn(updatedCheckIn: CheckInObject){
-        last_updated_textview.text = "Last Updated: \n ${updatedCheckIn.date}"
+        last_updated_textview.text = "Last Updated\n${updatedCheckIn.date}"
         question_one_answer_textview.text = updatedCheckIn.questionOne
         question_two_answer_textview.text = updatedCheckIn.questionTwo
         question_three_answer_textview.text = updatedCheckIn.questionThree
@@ -49,4 +50,19 @@ class ViewCheckInsActivity : AppCompatActivity() {
         question_six_answer_textview.text = updatedCheckIn.questionSix
         question_seven_answer_textview.text = updatedCheckIn.questionSeven
     }//displayCheckIn function
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.view_user_workout_check_in_top_nav_menu -> {
+                val intent = Intent(this, ViewUserWorkoutsFromCheckInActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_nav_menu_check_in, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 }

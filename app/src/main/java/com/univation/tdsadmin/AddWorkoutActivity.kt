@@ -43,7 +43,7 @@ class AddWorkoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_workout)
         setTitle("Add workout")
 
-        val userChosen = ChooseUserForWorkoutsActivity.userChosen
+        val userChosen = ChooseUserForAddWorkoutsActivity.userChosen
 
         refreshWorkoutRecycler()
         refreshWarmupRecycler()
@@ -132,7 +132,7 @@ class AddWorkoutActivity : AppCompatActivity() {
             return
         }
 
-        val userChosen = ChooseUserForWorkoutsActivity.userChosen
+        val userChosen = ChooseUserForAddWorkoutsActivity.userChosen
 
         val pageRef = FirebaseDatabase.getInstance().getReference("/workout-page/${userChosen?.uid}").push()
         pageRef.setValue(WorkoutPageObject(pageRef.key!!, dateChosen, workoutArrayList, warmupArrayList, DailyMacronutrientsObject("", "", "", "","")))

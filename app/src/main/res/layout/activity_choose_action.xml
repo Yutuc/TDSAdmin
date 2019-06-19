@@ -24,4 +24,12 @@
             app:layout_constraintTop_toBottomOf="@+id/add_workout_button"
             app:layout_constraintStart_toStartOf="@+id/add_workout_button"
             app:layout_constraintEnd_toEndOf="@+id/add_workout_button"/>
+    <Button
+            android:text="View Workouts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_workouts_button" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/view_check_ins_button"
+            app:layout_constraintStart_toStartOf="@+id/view_check_ins_button"
+            app:layout_constraintEnd_toEndOf="@+id/view_check_ins_button"/>
 </android.support.constraint.ConstraintLayout>

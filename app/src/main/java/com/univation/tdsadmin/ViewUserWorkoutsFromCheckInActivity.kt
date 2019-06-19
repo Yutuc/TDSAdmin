@@ -8,21 +8,20 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class ViewUserWorkoutsActivity : AppCompatActivity() {
+class ViewUserWorkoutsFromCheckInActivity : AppCompatActivity() {
 
     companion object {
-        val USER_UID = "USER_UID"
         var uid = ""
         var userName = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_user_workouts)
+        setContentView(R.layout.activity_view_user_workouts_from_check_in)
 
-        uid = intent.getStringExtra(USER_UID)
+        uid = ChooseUserForViewCheckInsActivity.userChosen?.uid!!
         pullUserName()
-        displayFragment(WorkoutFragment())
+        displayFragment(WorkoutFragmentForCheckIns())
     }
 
     private fun pullUserName(){
