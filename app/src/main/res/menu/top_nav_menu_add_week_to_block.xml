@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/add_day_to_week"
+          android:title="Add Day"
+          android:icon="@drawable/ic_add_white"
+          app:showAsAction="ifRoom" ></item>
+
+    <item android:id="@+id/save_week_to_block"
+          android:title="Add Week"
+          android:icon="@drawable/ic_save_white"
+          app:showAsAction="ifRoom" ></item>
+
+</menu>

@@ -32,7 +32,7 @@
             app:layout_constraintTop_toBottomOf="@+id/warmup_card_title_textview" android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
-            android:text="Sets/Reps"
+            android:text="SetsXReps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sets_reps_textview_warmup"

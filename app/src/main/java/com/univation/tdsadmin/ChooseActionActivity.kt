@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
+import com.univation.tdsadmin.addworkout.ChooseUserForAddWorkoutsActivity
+import com.univation.tdsadmin.viewcheckins.ChooseUserForViewCheckInsActivity
+import com.univation.tdsadmin.viewworkouts.ChooseUserForViewWorkoutActivity
 import kotlinx.android.synthetic.main.activity_choose_action.*
 
 class ChooseActionActivity : AppCompatActivity() {

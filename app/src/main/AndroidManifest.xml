@@ -9,64 +9,74 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ViewUserWorkouts">
+        <activity android:name=".addworkout.AddWeekToBlockActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForViewWorkoutActivity"/>
+                    android:value=".addworkout.AddBlockActivity"/>
         </activity>
-        <activity android:name=".ChooseUserForViewWorkoutActivity">
+        <activity android:name=".addworkout.AddBlockActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
+        </activity>
+        <activity android:name=".viewworkouts.ViewUserWorkouts">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".viewworkouts.ChooseUserForViewWorkoutActivity"/>
+        </activity>
+        <activity android:name=".viewworkouts.ChooseUserForViewWorkoutActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".ChooseUserForViewCheckInsActivity">
+        <activity android:name=".viewcheckins.ChooseUserForViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".ViewCheckInsActivity">
+        <activity android:name=".viewcheckins.ViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForViewCheckInsActivity"/>
+                    android:value=".viewcheckins.ChooseUserForViewCheckInsActivity"/>
         </activity>
-        <activity android:name=".ChooseWarmupExerciseActivity">
+        <activity android:name=".addworkout.ChooseWarmupExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".InputWarmupExerciseActivity"/>
+                    android:value=".addworkout.InputWarmupExerciseActivity"/>
         </activity>
-        <activity android:name=".ChooseWorkoutExerciseActivity">
+        <activity android:name=".addworkout.ChooseMainExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".InputWorkoutExerciseActivity"/>
+                    android:value=".addworkout.InputMainExerciseActivity"/>
         </activity>
-        <activity android:name=".ViewUserWorkoutsFromCheckInActivity">
+        <activity android:name=".viewcheckins.ViewUserWorkoutsFromCheckInActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ViewCheckInsActivity"/>
+                    android:value=".viewcheckins.ViewCheckInsActivity"/>
         </activity>
-        <activity android:name=".InputWarmupExerciseActivity">
+        <activity android:name=".addworkout.InputWarmupExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".AddWorkoutActivity"/>
+                    android:value=".addworkout.AddWorkoutActivity"/>
         </activity>
-        <activity android:name=".InputWorkoutExerciseActivity">
+        <activity android:name=".addworkout.InputMainExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".AddWorkoutActivity"/>
+                    android:value=".addworkout.AddWorkoutActivity"/>
         </activity>
         <activity
                 android:name=".AddCheckInActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForAddWorkoutsActivity"/>
+                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
         </activity>
         <activity
-                android:name=".AddWorkoutActivity"
+                android:name=".addworkout.AddWorkoutActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseUserForAddWorkoutsActivity"/>
+                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
         </activity>
         <activity
                 android:name=".ChooseActionActivity"
@@ -83,7 +93,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ChooseUserForAddWorkoutsActivity"
+                android:name=".addworkout.ChooseUserForAddWorkoutsActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
