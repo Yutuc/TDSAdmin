@@ -9,7 +9,20 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".addworkout.ChooseCoreExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".addworkout.InputCoreExerciseActivity"/>
+        </activity>
+        <activity android:name=".addworkout.InputCoreExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".addworkout.AddWeekToBlockActivity"/>
+        </activity>
         <activity android:name=".addworkout.ChooseAccessoryExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".addworkout.InputAccessoryExerciseActivity"/>
         </activity>
         <activity android:name=".addworkout.InputAccessoryExerciseActivity">
             <meta-data

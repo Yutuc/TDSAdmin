@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".addworkout.ChooseAccessoryExerciseActivity">
+        tools:context=".addworkout.ChooseCoreExerciseActivity">
 
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
@@ -13,5 +13,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/recyclerview_choose_accessory_exercise"/>
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/recyclerview_choose_core_exercise"/>
 </android.support.constraint.ConstraintLayout>

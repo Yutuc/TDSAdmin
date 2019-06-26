@@ -5,15 +5,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".addworkout.InputAccessoryExerciseActivity">
+        tools:context=".addworkout.InputCoreExerciseActivity">
 
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            app:layout_constraintTop_toBottomOf="@+id/exercise_name_input_accessory"
-            android:id="@+id/sets_input_accessory"
+            app:layout_constraintTop_toBottomOf="@+id/exercise_name_input_core"
+            android:id="@+id/sets_input_core"
             android:hint="# of sets"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,25 +24,25 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/reps_input_accessory" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/sets_input_accessory" android:hint="# of reps"
-            app:layout_constraintStart_toStartOf="@+id/sets_input_accessory"
-            app:layout_constraintEnd_toEndOf="@+id/sets_input_accessory"/>
+            android:id="@+id/reps_input_core" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/sets_input_core" android:hint="# of reps"
+            app:layout_constraintStart_toStartOf="@+id/sets_input_core"
+            app:layout_constraintEnd_toEndOf="@+id/sets_input_core"/>
     <Button
             android:text="Add exercise"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/add_exercise_button_accessory"
+            android:id="@+id/add_exercise_button_core"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/reps_input_accessory"
-            app:layout_constraintStart_toStartOf="@+id/reps_input_accessory"
-            app:layout_constraintEnd_toEndOf="@+id/reps_input_accessory"/>
+            app:layout_constraintTop_toBottomOf="@+id/reps_input_core"
+            app:layout_constraintStart_toStartOf="@+id/reps_input_core"
+            app:layout_constraintEnd_toEndOf="@+id/reps_input_core"/>
     <TextView
             android:text="Click to select exercise"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/exercise_name_input_accessory" app:layout_constraintStart_toStartOf="@+id/sets_input_accessory"
-            app:layout_constraintEnd_toEndOf="@+id/sets_input_accessory" android:layout_marginTop="32dp"
+            android:id="@+id/exercise_name_input_core" app:layout_constraintStart_toStartOf="@+id/sets_input_core"
+            app:layout_constraintEnd_toEndOf="@+id/sets_input_core" android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent" android:textSize="24sp"
             android:textAlignment="center"
             android:textStyle="bold"/>

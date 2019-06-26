@@ -2,10 +2,7 @@ package com.univation.tdsadmin.adapters
 
 import android.content.Intent
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.addworkout.AddWeekToBlockActivity
-import com.univation.tdsadmin.addworkout.InputAccessoryExerciseActivity
-import com.univation.tdsadmin.addworkout.InputMainExerciseActivity
-import com.univation.tdsadmin.addworkout.InputWarmupExerciseActivity
+import com.univation.tdsadmin.addworkout.*
 import com.univation.tdsadmin.objects.WorkoutDayObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -17,6 +14,7 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
     val mainAdapter = GroupAdapter<ViewHolder>()
     val warmupAdapter = GroupAdapter<ViewHolder>()
     val accessoryAdapter = GroupAdapter<ViewHolder>()
+    val coreAdapter = GroupAdapter<ViewHolder>()
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
 
@@ -73,12 +71,30 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
             val intent = Intent(AddWeekToBlockActivity.context, InputAccessoryExerciseActivity::class.java)
             AddWeekToBlockActivity.context?.startActivity(intent)
         }
+
+        viewHolder.itemView.core_exercises_recyclerview.adapter = coreAdapter
+        refreshCoreRecyclerView()
+
+        coreAdapter.setOnItemLongClickListener { item, _ ->
+            AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
+            val coreExerciseClicked = item as CoreExerciseRow
+            val intent = Intent(AddWeekToBlockActivity.context, InputCoreExerciseActivity::class.java)
+            AddWeekToBlockActivity.context?.startActivity(intent)
+            AddWeekToBlockActivity.coreExerciseEdit = coreExerciseClicked.exerciseObject
+            true
+        }
+
+        viewHolder.itemView.add_core_exercise_button.setOnClickListener {
+            AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
+            val intent = Intent(AddWeekToBlockActivity.context, InputCoreExerciseActivity::class.java)
+            AddWeekToBlockActivity.context?.startActivity(intent)
+        }
     }
 
     private fun refreshMainRecyclerView(){
         mainAdapter.clear()
         mainAdapter.add(WorkoutTitlesRow())
-        workoutDayObject.mainWorkoutArrayList?.forEach {
+        workoutDayObject.mainArrayList?.forEach {
             mainAdapter.add(WorkoutExerciseRow(it))
         }
     }//refreshMainRecyclerView function
@@ -90,6 +106,14 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
             accessoryAdapter.add(AccessoryExerciseRow(it))
         }
     }
+
+    private fun refreshCoreRecyclerView(){
+        coreAdapter.clear()
+        coreAdapter.add(CoreTitlesRow())
+        workoutDayObject.coreArrayList?.forEach {
+            coreAdapter.add(CoreExerciseRow(it))
+        }
+    }//refreshCoreRecyclerView function
 
     private fun refreshWarmupRecyclerView(){
         warmupAdapter.clear()

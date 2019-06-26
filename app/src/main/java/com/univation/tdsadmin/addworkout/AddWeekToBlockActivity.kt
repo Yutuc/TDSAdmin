@@ -7,10 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.WorkoutDayColumn
-import com.univation.tdsadmin.objects.AccessoryExerciseObject
-import com.univation.tdsadmin.objects.MainExerciseObject
-import com.univation.tdsadmin.objects.WarmupExerciseObject
-import com.univation.tdsadmin.objects.WorkoutDayObject
+import com.univation.tdsadmin.objects.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_add_week_to_block.*
@@ -26,6 +23,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
         var mainExerciseEdit : MainExerciseObject? = null
         var warmupExerciseEdit : WarmupExerciseObject? = null
         var accessoryExerciseEdit : AccessoryExerciseObject? = null
+        var coreExerciseEdit : CoreExerciseObject? = null
 
         val adapter = GroupAdapter<ViewHolder>()
     }
@@ -41,7 +39,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_day_to_week -> {
-                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, arrayListOf(), arrayListOf(), arrayListOf())
+                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
                 workoutDaysArrayList.add(workoutDayObject)
                 adapter.add(WorkoutDayColumn(workoutDayObject))
             }

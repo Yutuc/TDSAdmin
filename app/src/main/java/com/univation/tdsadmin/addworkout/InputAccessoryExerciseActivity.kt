@@ -8,6 +8,7 @@ import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.AccessoryExerciseObject
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import com.univation.tdsadmin.objects.WarmupExerciseObject
+import kotlinx.android.synthetic.main.activity_input_accessory_exercise.*
 import kotlinx.android.synthetic.main.activity_input_warmup_exercise.*
 
 class InputAccessoryExerciseActivity : AppCompatActivity() {
@@ -21,26 +22,26 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
 
         //after an exercise from the database was chosen
         if(exerciseDatabaseObject != null){
-            exercise_name_input_warmup.text = exerciseDatabaseObject.exerciseName
+            exercise_name_input_accessory.text = exerciseDatabaseObject.exerciseName
         }
 
         //if user wants to edit an exercise
         if(accessoryExerciseEdit != null){
             if(ChooseAccessoryExerciseActivity.accessoryExerciseClicked == null){
                 ChooseAccessoryExerciseActivity.accessoryExerciseClicked = ExerciseDatabaseObject(accessoryExerciseEdit.exerciseName, accessoryExerciseEdit.url)
-                exercise_name_input_warmup.text = accessoryExerciseEdit.exerciseName
+                exercise_name_input_accessory.text = accessoryExerciseEdit.exerciseName
             }
             else if(ChooseAccessoryExerciseActivity.accessoryExerciseClicked?.exerciseName != accessoryExerciseEdit.exerciseName){
-                exercise_name_input_warmup.text = exerciseDatabaseObject?.exerciseName
+                exercise_name_input_accessory.text = exerciseDatabaseObject?.exerciseName
             }
             else{
-                exercise_name_input_warmup.text = accessoryExerciseEdit.exerciseName
+                exercise_name_input_accessory.text = accessoryExerciseEdit.exerciseName
             }
-            sets_input_warmup.setText(accessoryExerciseEdit.sets)
-            reps_input_warmup.setText(accessoryExerciseEdit.reps)
+            sets_input_accessory.setText(accessoryExerciseEdit.sets)
+            reps_input_accessory.setText(accessoryExerciseEdit.reps)
         }
 
-        add_exercise_button_warmup.setOnClickListener {
+        add_exercise_button_accessory.setOnClickListener {
             if(accessoryExerciseEdit != null){
                 editExerciseInAccessoryArrayList()
             }
@@ -49,7 +50,7 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
             }
         }
 
-        exercise_name_input_warmup.setOnClickListener {
+        exercise_name_input_accessory.setOnClickListener {
             val intent = Intent(this, ChooseAccessoryExerciseActivity::class.java)
             startActivity(intent)
         }
@@ -61,9 +62,9 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
         val exercisePosition = AddWeekToBlockActivity.accessoryExerciseEdit?.position
 
         if(exercisePosition != -1){
-            val exerciseName = exercise_name_input_warmup.text.toString()
-            val sets = sets_input_warmup.text.toString()
-            val reps = reps_input_warmup.text.toString()
+            val exerciseName = exercise_name_input_accessory.text.toString()
+            val sets = sets_input_accessory.text.toString()
+            val reps = reps_input_accessory.text.toString()
 
             if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || exerciseName.isEmpty()){
                 Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
@@ -87,15 +88,15 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }//editExerciseInWarmupArrayList function
+    }//editExerciseInAccessoryArrayList function
 
     private fun addAccessoryToArrayList(){
         val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
         val accessoryArrayList = workoutDayObject.accessoryArrayList
 
-        val exerciseName = exercise_name_input_warmup.text.toString()
-        val sets = sets_input_warmup.text.toString()
-        val reps = reps_input_warmup.text.toString()
+        val exerciseName = exercise_name_input_accessory.text.toString()
+        val sets = sets_input_accessory.text.toString()
+        val reps = reps_input_accessory.text.toString()
 
         val exerciseDatabaseObject = ChooseAccessoryExerciseActivity.accessoryExerciseClicked
 
@@ -120,7 +121,7 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
         val intent  = Intent(this, AddWeekToBlockActivity::class.java)
         startActivity(intent)
         finish()
-    }//addWarmupToArrayList function
+    }//addAccessoryToArrayList function
 
     override fun onBackPressed() {
 

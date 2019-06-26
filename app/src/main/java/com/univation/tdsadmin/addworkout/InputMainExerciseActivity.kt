@@ -57,7 +57,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
 
     private fun editExerciseInWorkoutArrayList(){
         val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
-        val mainWorkoutArrayList = workoutDayObject.mainWorkoutArrayList
+        val mainWorkoutArrayList = workoutDayObject.mainArrayList
         val exercisePosition = AddWeekToBlockActivity.mainExerciseEdit?.position
 
         if(exercisePosition != -1){
@@ -95,7 +95,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
     private fun addToWorkoutArrayList(){
 
         val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
-        val mainWorkoutArrayList = workoutDayObject.mainWorkoutArrayList
+        val mainWorkoutArrayList = workoutDayObject.mainArrayList
 
         val exerciseName = exercise_name_input_workout.text.toString()
         val sets = sets_input_workout.text.toString()
