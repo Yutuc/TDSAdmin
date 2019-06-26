@@ -1,6 +1,7 @@
 package com.univation.tdsadmin.adapters
 
 import android.content.Intent
+import android.view.View
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.addworkout.*
 import com.univation.tdsadmin.objects.WorkoutDayObject
@@ -18,6 +19,10 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
     val conditioningAdapter = GroupAdapter<ViewHolder>()
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
+
+        viewHolder.itemView.workout_day_scrollview.post {
+            viewHolder.itemView.workout_day_scrollview.fullScroll(View.FOCUS_DOWN)
+        }
 
         viewHolder.itemView.main_exercises_recyclerview.adapter = mainAdapter
         refreshMainRecyclerView()

@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.WorkoutDayColumn
 import com.univation.tdsadmin.objects.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_add_week_to_block.*
+import kotlinx.android.synthetic.main.workout_day_layout.*
 
 class AddWeekToBlockActivity : AppCompatActivity() {
 
