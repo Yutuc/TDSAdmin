@@ -35,7 +35,7 @@ class ChooseUserForViewCheckInsActivity : AppCompatActivity() {
 
         setTitle("Select user")
 
-        adapter.setOnItemClickListener { item, view ->
+        adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
             val intent = Intent(this, ViewCheckInsActivity::class.java)
             userChosen = userClicked.user

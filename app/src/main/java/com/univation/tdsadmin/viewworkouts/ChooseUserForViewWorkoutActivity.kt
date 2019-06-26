@@ -33,7 +33,7 @@ class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
 
         setTitle("Select user")
 
-        adapter.setOnItemClickListener { item, view ->
+        adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
             val intent = Intent(this, ViewUserWorkouts::class.java)
             userChosen = userClicked.user

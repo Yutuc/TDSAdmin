@@ -14,37 +14,37 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.univation.tdsadmin.adapters.ChooseExerciseRow
 import com.univation.tdsadmin.R
+import com.univation.tdsadmin.adapters.ChooseExerciseRow
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_choose_warmup_exercise.*
+import kotlinx.android.synthetic.main.activity_choose_accessory_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_alert_dialog.view.*
 
-class ChooseWarmupExerciseActivity : AppCompatActivity() {
+class ChooseAccessoryExerciseActivity : AppCompatActivity() {
 
     companion object{
         val exerciseMap = HashMap<String, ExerciseDatabaseObject>()
         val exerciseMapCopy = HashMap<String, ExerciseDatabaseObject>()
-        var warmupExerciseClicked : ExerciseDatabaseObject? = null
+        var accessoryExerciseClicked : ExerciseDatabaseObject? = null
     }
 
     val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_warmup_exercise)
+        setContentView(R.layout.activity_choose_accessory_exercise)
 
         setTitle("Select an exercise")
 
-        recyclerview_choose_warmup_exercise.adapter = adapter
-        recyclerview_choose_warmup_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerview_choose_accessory_exercise.adapter = adapter
+        recyclerview_choose_accessory_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         adapter.setOnItemClickListener { item, _ ->
             val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
-            val intent = Intent(this, InputWarmupExerciseActivity::class.java)
-            warmupExerciseClicked = exerciseRecyclerviewRowItem.exerciseDatabaseObject
+            val intent = Intent(this, InputAccessoryExerciseActivity::class.java)
+            accessoryExerciseClicked = exerciseRecyclerviewRowItem.exerciseDatabaseObject
             startActivity(intent)
             finish()
         }

@@ -41,17 +41,15 @@ class ChooseMainExerciseActivity : AppCompatActivity() {
         recyclerview_choose_workout_exercise.adapter = adapter
         recyclerview_choose_workout_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
-        adapter.setOnItemClickListener { item, view ->
+        adapter.setOnItemClickListener { item, _ ->
             val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
             val intent = Intent(this, InputMainExerciseActivity::class.java)
-
             mainExerciseClicked = exerciseRecyclerviewRowItem.exerciseDatabaseObject
-
             startActivity(intent)
             finish()
         }
 
-        adapter.setOnItemLongClickListener { item, view ->
+        adapter.setOnItemLongClickListener { item, _ ->
             val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
 
             val dialogBuilder = AlertDialog.Builder(this)

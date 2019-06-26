@@ -7,7 +7,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.warmup_item.view.*
 
-class WarmupCard(val warmupArrayList: ArrayList<WarmupExerciseObject>): Item<ViewHolder>(){
+class WarmupWorkoutAdapter(val warmupArrayList: ArrayList<WarmupExerciseObject>): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val warmupItemAdapter = GroupAdapter<ViewHolder>()
         warmupItemAdapter.add(WarmupTitlesRow())

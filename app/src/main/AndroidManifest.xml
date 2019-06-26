@@ -9,6 +9,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".addworkout.ChooseAccessoryExerciseActivity">
+        </activity>
+        <activity android:name=".addworkout.InputAccessoryExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".addworkout.AddWeekToBlockActivity"/>
+        </activity>
         <activity android:name=".addworkout.AddWeekToBlockActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -57,26 +64,12 @@
         <activity android:name=".addworkout.InputWarmupExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWorkoutActivity"/>
+                    android:value=".addworkout.AddWeekToBlockActivity"/>
         </activity>
         <activity android:name=".addworkout.InputMainExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWorkoutActivity"/>
-        </activity>
-        <activity
-                android:name=".AddCheckInActivity"
-                android:screenOrientation="portrait">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
-        </activity>
-        <activity
-                android:name=".addworkout.AddWorkoutActivity"
-                android:screenOrientation="portrait">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
+                    android:value=".addworkout.AddWeekToBlockActivity"/>
         </activity>
         <activity
                 android:name=".ChooseActionActivity"

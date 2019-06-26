@@ -4,7 +4,7 @@ import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.MainExerciseObject
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.workout_and_warmup_exercise_row.view.*
+import kotlinx.android.synthetic.main.workout_exercise_row.view.*
 
 class WorkoutExerciseRow(val exerciseObject: MainExerciseObject): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -20,6 +20,6 @@ class WorkoutExerciseRow(val exerciseObject: MainExerciseObject): Item<ViewHolde
     }
 
     override fun getLayout(): Int {
-        return R.layout.workout_and_warmup_exercise_row
+        return R.layout.workout_exercise_row
     }
 }

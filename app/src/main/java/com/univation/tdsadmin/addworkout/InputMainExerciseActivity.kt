@@ -15,7 +15,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input_main_exercise)
 
-        val exerciseEdit = AddWeekToBlockActivity.exerciseEdit
+        val mainExerciseEdit = AddWeekToBlockActivity.mainExerciseEdit
         val exerciseDatabaseObject = ChooseMainExerciseActivity.mainExerciseClicked
 
         //after an exercise from the database was chosen
@@ -24,24 +24,24 @@ class InputMainExerciseActivity : AppCompatActivity() {
         }
 
         //if user wants to edit an exercise
-        if(exerciseEdit != null){
+        if(mainExerciseEdit != null){
             if(ChooseMainExerciseActivity.mainExerciseClicked == null){
-                ChooseMainExerciseActivity.mainExerciseClicked = ExerciseDatabaseObject(exerciseEdit.exerciseName, exerciseEdit.url)
-                exercise_name_input_workout.text = exerciseEdit.exerciseName
+                ChooseMainExerciseActivity.mainExerciseClicked = ExerciseDatabaseObject(mainExerciseEdit.exerciseName, mainExerciseEdit.url)
+                exercise_name_input_workout.text = mainExerciseEdit.exerciseName
             }
-            else if(ChooseMainExerciseActivity.mainExerciseClicked?.exerciseName != exerciseEdit.exerciseName){
+            else if(ChooseMainExerciseActivity.mainExerciseClicked?.exerciseName != mainExerciseEdit.exerciseName){
                 exercise_name_input_workout.text = exerciseDatabaseObject?.exerciseName
             }
             else{
-                exercise_name_input_workout.text = exerciseEdit.exerciseName
+                exercise_name_input_workout.text = mainExerciseEdit.exerciseName
             }
-            sets_input_workout.setText(exerciseEdit.sets)
-            reps_input_workout.setText(exerciseEdit.reps)
-            rpe_input_workout.setText(exerciseEdit.rpe)
+            sets_input_workout.setText(mainExerciseEdit.sets)
+            reps_input_workout.setText(mainExerciseEdit.reps)
+            rpe_input_workout.setText(mainExerciseEdit.rpe)
         }
 
         add_exercise_button_workout.setOnClickListener {
-            if(exerciseEdit != null){
+            if(mainExerciseEdit != null){
                 editExerciseInWorkoutArrayList()
             }
             else{
@@ -56,9 +56,9 @@ class InputMainExerciseActivity : AppCompatActivity() {
     }
 
     private fun editExerciseInWorkoutArrayList(){
-        val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition!!)
+        val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
         val mainWorkoutArrayList = workoutDayObject.mainWorkoutArrayList
-        val exercisePosition = AddWeekToBlockActivity.exerciseEdit?.position
+        val exercisePosition = AddWeekToBlockActivity.mainExerciseEdit?.position
 
         if(exercisePosition != -1){
             val exerciseName = exercise_name_input_workout.text.toString()
@@ -73,7 +73,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
 
             mainWorkoutArrayList?.set(exercisePosition!!,
                 MainExerciseObject(
-                    exercisePosition!!,
+                    exercisePosition,
                     exerciseName,
                     sets,
                     reps,
@@ -83,7 +83,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
                 )
             )
 
-            AddWeekToBlockActivity.exerciseEdit = null
+            AddWeekToBlockActivity.mainExerciseEdit = null
             ChooseMainExerciseActivity.mainExerciseClicked = null
 
             val intent  = Intent(this, AddWeekToBlockActivity::class.java)
@@ -94,7 +94,7 @@ class InputMainExerciseActivity : AppCompatActivity() {
 
     private fun addToWorkoutArrayList(){
 
-        val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition!!)
+        val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
         val mainWorkoutArrayList = workoutDayObject.mainWorkoutArrayList
 
         val exerciseName = exercise_name_input_workout.text.toString()
@@ -121,11 +121,15 @@ class InputMainExerciseActivity : AppCompatActivity() {
             )
         )
 
-        AddWeekToBlockActivity.exerciseEdit = null
+        AddWeekToBlockActivity.mainExerciseEdit = null
         ChooseMainExerciseActivity.mainExerciseClicked = null
 
         val intent  = Intent(this, AddWeekToBlockActivity::class.java)
         startActivity(intent)
         finish()
     }//pushData function
+
+    override fun onBackPressed() {
+
+    }
 }

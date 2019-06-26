@@ -5,18 +5,19 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.univation.tdsadmin.R
+import com.univation.tdsadmin.objects.AccessoryExerciseObject
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import com.univation.tdsadmin.objects.WarmupExerciseObject
 import kotlinx.android.synthetic.main.activity_input_warmup_exercise.*
 
-class InputWarmupExerciseActivity : AppCompatActivity() {
+class InputAccessoryExerciseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_input_warmup_exercise)
+        setContentView(R.layout.activity_input_accessory_exercise)
 
-        val warmupExerciseEdit = AddWeekToBlockActivity.warmupExerciseEdit
-        val exerciseDatabaseObject = ChooseWarmupExerciseActivity.warmupExerciseClicked
+        val accessoryExerciseEdit = AddWeekToBlockActivity.accessoryExerciseEdit
+        val exerciseDatabaseObject = ChooseAccessoryExerciseActivity.accessoryExerciseClicked
 
         //after an exercise from the database was chosen
         if(exerciseDatabaseObject != null){
@@ -24,40 +25,40 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
         }
 
         //if user wants to edit an exercise
-        if(warmupExerciseEdit != null){
-            if(ChooseWarmupExerciseActivity.warmupExerciseClicked == null){
-                ChooseWarmupExerciseActivity.warmupExerciseClicked = ExerciseDatabaseObject(warmupExerciseEdit.exerciseName, warmupExerciseEdit.url)
-                exercise_name_input_warmup.text = warmupExerciseEdit.exerciseName
+        if(accessoryExerciseEdit != null){
+            if(ChooseAccessoryExerciseActivity.accessoryExerciseClicked == null){
+                ChooseAccessoryExerciseActivity.accessoryExerciseClicked = ExerciseDatabaseObject(accessoryExerciseEdit.exerciseName, accessoryExerciseEdit.url)
+                exercise_name_input_warmup.text = accessoryExerciseEdit.exerciseName
             }
-            else if(ChooseWarmupExerciseActivity.warmupExerciseClicked?.exerciseName != warmupExerciseEdit.exerciseName){
+            else if(ChooseAccessoryExerciseActivity.accessoryExerciseClicked?.exerciseName != accessoryExerciseEdit.exerciseName){
                 exercise_name_input_warmup.text = exerciseDatabaseObject?.exerciseName
             }
             else{
-                exercise_name_input_warmup.text = warmupExerciseEdit.exerciseName
+                exercise_name_input_warmup.text = accessoryExerciseEdit.exerciseName
             }
-            sets_input_warmup.setText(warmupExerciseEdit.sets)
-            reps_input_warmup.setText(warmupExerciseEdit.reps)
+            sets_input_warmup.setText(accessoryExerciseEdit.sets)
+            reps_input_warmup.setText(accessoryExerciseEdit.reps)
         }
 
         add_exercise_button_warmup.setOnClickListener {
-            if(warmupExerciseEdit != null){
-                editExerciseInWarmupArrayList()
+            if(accessoryExerciseEdit != null){
+                editExerciseInAccessoryArrayList()
             }
             else{
-                addWarmupToArrayList()
+                addAccessoryToArrayList()
             }
         }
 
         exercise_name_input_warmup.setOnClickListener {
-            val intent = Intent(this, ChooseWarmupExerciseActivity::class.java)
+            val intent = Intent(this, ChooseAccessoryExerciseActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun editExerciseInWarmupArrayList(){
+    private fun editExerciseInAccessoryArrayList(){
         val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
-        val warmupArrayList = workoutDayObject.warmupArrayList
-        val exercisePosition = AddWeekToBlockActivity.warmupExerciseEdit?.position
+        val accessoryArrayList = workoutDayObject.accessoryArrayList
+        val exercisePosition = AddWeekToBlockActivity.accessoryExerciseEdit?.position
 
         if(exercisePosition != -1){
             val exerciseName = exercise_name_input_warmup.text.toString()
@@ -69,18 +70,18 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
                 return
             }
 
-            warmupArrayList?.set(exercisePosition!!,
-                WarmupExerciseObject(
+            accessoryArrayList?.set(exercisePosition!!,
+                AccessoryExerciseObject(
                     exercisePosition,
                     exerciseName,
                     sets,
                     reps,
-                    warmupArrayList.get(exercisePosition).url
+                    accessoryArrayList.get(exercisePosition).url
                 )
             )
 
-            AddWeekToBlockActivity.warmupExerciseEdit = null
-            ChooseWarmupExerciseActivity.warmupExerciseClicked = null
+            AddWeekToBlockActivity.accessoryExerciseEdit = null
+            ChooseAccessoryExerciseActivity.accessoryExerciseClicked = null
 
             val intent  = Intent(this, AddWeekToBlockActivity::class.java)
             startActivity(intent)
@@ -88,24 +89,24 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
         }
     }//editExerciseInWarmupArrayList function
 
-    private fun addWarmupToArrayList(){
+    private fun addAccessoryToArrayList(){
         val workoutDayObject = AddWeekToBlockActivity.workoutDaysArrayList.get(AddWeekToBlockActivity.workoutDayClickedPosition)
-        val warmupArrayList = workoutDayObject.warmupArrayList
+        val accessoryArrayList = workoutDayObject.accessoryArrayList
 
         val exerciseName = exercise_name_input_warmup.text.toString()
         val sets = sets_input_warmup.text.toString()
         val reps = reps_input_warmup.text.toString()
 
-        val exerciseDatabaseObject = ChooseWarmupExerciseActivity.warmupExerciseClicked
+        val exerciseDatabaseObject = ChooseAccessoryExerciseActivity.accessoryExerciseClicked
 
         if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || exerciseDatabaseObject == null){
             Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
             return
         }
 
-        warmupArrayList?.add(
-            WarmupExerciseObject(
-                warmupArrayList.size,
+        accessoryArrayList?.add(
+            AccessoryExerciseObject(
+                accessoryArrayList.size,
                 exerciseName,
                 sets,
                 reps,
@@ -113,8 +114,8 @@ class InputWarmupExerciseActivity : AppCompatActivity() {
             )
         )
 
-        AddWeekToBlockActivity.warmupExerciseEdit = null
-        ChooseWarmupExerciseActivity.warmupExerciseClicked = null
+        AddWeekToBlockActivity.accessoryExerciseEdit = null
+        ChooseAccessoryExerciseActivity.accessoryExerciseClicked = null
 
         val intent  = Intent(this, AddWeekToBlockActivity::class.java)
         startActivity(intent)

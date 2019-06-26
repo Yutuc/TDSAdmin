@@ -14,9 +14,9 @@ class VerticalRecyclerViewWorkout(val context: Context, val inflater: LayoutInfl
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val verticalAdapter = GroupAdapter<ViewHolder>()
         verticalAdapter.add(DateTitleWorkoutRow(workoutPageObject.date))
-        verticalAdapter.add(WarmupCard(workoutPageObject.warmupExercises))
+        verticalAdapter.add(WarmupWorkoutAdapter(workoutPageObject.warmupExercises))
         verticalAdapter.add(
-            WorkoutCard(
+            MainWorkoutAdapter(
                 context,
                 inflater,
                 workoutPageObject.key,

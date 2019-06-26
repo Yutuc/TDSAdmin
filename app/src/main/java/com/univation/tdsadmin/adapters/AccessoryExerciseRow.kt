@@ -1,12 +1,12 @@
 package com.univation.tdsadmin.adapters
 
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.objects.WarmupExerciseObject
+import com.univation.tdsadmin.objects.AccessoryExerciseObject
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.workout_exercise_row.view.*
 
-class WarmupExerciseRow(val exerciseObject: WarmupExerciseObject): Item<ViewHolder>(){
+class AccessoryExerciseRow(val exerciseObject: AccessoryExerciseObject): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val exerciseName = exerciseObject.exerciseName
         val sets = exerciseObject.sets

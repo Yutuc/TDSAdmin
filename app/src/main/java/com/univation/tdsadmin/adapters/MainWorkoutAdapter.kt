@@ -9,7 +9,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.workout_page_column.view.*
 
-class WorkoutCard(val context: Context, val inflater: LayoutInflater, val key: String, val workoutArrayList: ArrayList<MainExerciseObject>): Item<ViewHolder>() {
+class MainWorkoutAdapter(val context: Context, val inflater: LayoutInflater, val key: String, val workoutArrayList: ArrayList<MainExerciseObject>): Item<ViewHolder>() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val adapter = GroupAdapter<ViewHolder>()

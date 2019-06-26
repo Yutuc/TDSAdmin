@@ -28,13 +28,9 @@ class ChooseUserForAddWorkoutsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_user_for_add_workouts)
 
-        AddWorkoutActivity.workoutArrayList.clear()
-        AddWorkoutActivity.warmupArrayList.clear()
-        AddWorkoutActivity.dateChosen = ""
-
         setTitle("Select user to add to")
 
-        adapter.setOnItemClickListener { item, view ->
+        adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
             val intent = Intent(this, AddBlockActivity::class.java)
             userChosen = userClicked.user
