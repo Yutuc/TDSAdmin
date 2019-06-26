@@ -15,6 +15,7 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
     val warmupAdapter = GroupAdapter<ViewHolder>()
     val accessoryAdapter = GroupAdapter<ViewHolder>()
     val coreAdapter = GroupAdapter<ViewHolder>()
+    val conditioningAdapter = GroupAdapter<ViewHolder>()
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
 
@@ -89,6 +90,24 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
             val intent = Intent(AddWeekToBlockActivity.context, InputCoreExerciseActivity::class.java)
             AddWeekToBlockActivity.context?.startActivity(intent)
         }
+
+        viewHolder.itemView.conditioning_exercises_recyclerview.adapter = conditioningAdapter
+        refreshConditioningRecyclerView()
+
+        conditioningAdapter.setOnItemLongClickListener { item, _ ->
+            AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
+            val conditioningExerciseClicked = item as ConditioningExerciseRow
+            val intent = Intent(AddWeekToBlockActivity.context, InputConditioningExerciseActivity::class.java)
+            AddWeekToBlockActivity.context?.startActivity(intent)
+            AddWeekToBlockActivity.conditioningExerciseEdit = conditioningExerciseClicked.exerciseObject
+            true
+        }
+
+        viewHolder.itemView.add_conditioning_exercise_button.setOnClickListener {
+            AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
+            val intent = Intent(AddWeekToBlockActivity.context, InputConditioningExerciseActivity::class.java)
+            AddWeekToBlockActivity.context?.startActivity(intent)
+        }
     }
 
     private fun refreshMainRecyclerView(){
@@ -114,6 +133,14 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
             coreAdapter.add(CoreExerciseRow(it))
         }
     }//refreshCoreRecyclerView function
+
+    private fun refreshConditioningRecyclerView(){
+        conditioningAdapter.clear()
+        conditioningAdapter.add(ConditioningTitlesRow())
+        workoutDayObject.conditioningArrayList?.forEach {
+            conditioningAdapter.add(ConditioningExerciseRow(it))
+        }
+    }//refreshConditioningRecyclerView function
 
     private fun refreshWarmupRecyclerView(){
         warmupAdapter.clear()

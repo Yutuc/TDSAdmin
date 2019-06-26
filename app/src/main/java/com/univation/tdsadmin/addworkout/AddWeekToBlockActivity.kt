@@ -24,6 +24,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
         var warmupExerciseEdit : WarmupExerciseObject? = null
         var accessoryExerciseEdit : AccessoryExerciseObject? = null
         var coreExerciseEdit : CoreExerciseObject? = null
+        var conditioningExerciseEdit : ConditioningExerciseObject? = null
 
         val adapter = GroupAdapter<ViewHolder>()
     }
@@ -39,7 +40,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_day_to_week -> {
-                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
+                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
                 workoutDaysArrayList.add(workoutDayObject)
                 adapter.add(WorkoutDayColumn(workoutDayObject))
             }

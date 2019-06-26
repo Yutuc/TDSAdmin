@@ -64,7 +64,7 @@ class InputCoreExerciseActivity : AppCompatActivity() {
             val sets = sets_input_core.text.toString()
             val reps = reps_input_core.text.toString()
 
-            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty() || exerciseName.isEmpty()){
+            if(exerciseName.isEmpty() || sets.isEmpty() || reps.isEmpty()){
                 Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
                 return
             }
