@@ -10,10 +10,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.WorkoutDayObject
-import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
-import com.univation.tdsadmin.viewcheckins.ChooseUserForViewCheckInsActivity
-import com.univation.tdsadmin.viewcheckins.ChooseWeekActivity
-import com.univation.tdsadmin.viewcheckins.ViewWorkoutWeekActivityForCheckIns
 import com.univation.tdsadmin.workout_adapters.WorkoutDayRow
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
