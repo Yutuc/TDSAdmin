@@ -77,6 +77,7 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
                     exerciseName,
                     sets,
                     reps,
+                    "",
                     accessoryArrayList.get(exercisePosition).url
                 )
             )
@@ -111,6 +112,7 @@ class InputAccessoryExerciseActivity : AppCompatActivity() {
                 exerciseName,
                 sets,
                 reps,
+                "",
                 exerciseDatabaseObject.videoUrl
             )
         )

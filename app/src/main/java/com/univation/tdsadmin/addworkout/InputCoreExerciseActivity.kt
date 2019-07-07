@@ -75,6 +75,7 @@ class InputCoreExerciseActivity : AppCompatActivity() {
                     exerciseName,
                     sets,
                     reps,
+                    "",
                     coreArrayList.get(exercisePosition).url
                 )
             )
@@ -109,6 +110,7 @@ class InputCoreExerciseActivity : AppCompatActivity() {
                 exerciseName,
                 sets,
                 reps,
+                "",
                 exerciseDatabaseObject.videoUrl
             )
         )

@@ -56,7 +56,7 @@ class ViewCheckInsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.view_user_workout_check_in_top_nav_menu -> {
-                val intent = Intent(this, ViewUserWorkoutsFromCheckInActivity::class.java)
+                val intent = Intent(this, ChooseBlockActivity::class.java)
                 startActivity(intent)
             }
         }

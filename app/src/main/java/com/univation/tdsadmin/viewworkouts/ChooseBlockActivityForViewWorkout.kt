@@ -9,37 +9,20 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.UserObject
+import com.univation.tdsadmin.viewcheckins.ChooseBlockActivity
+import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
+import com.univation.tdsadmin.viewcheckins.ChooseUserForViewCheckInsActivity
 
-class ViewUserWorkouts : AppCompatActivity() {
-
-    companion object {
-        var uid = ""
-        var userName = ""
-    }
+class ChooseBlockActivityForViewWorkout : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_user_workouts)
 
-        uid = ChooseUserForViewWorkoutActivity.userChosen?.uid!!
-        pullUserName()
-        displayFragment(WorkoutFragmentForViewWorkouts())
+        setTitle("Choose block")
+
+        displayFragment(ChooseBlockFragmentForViewWorkout())
     }
-
-    private fun pullUserName(){
-        val ref = FirebaseDatabase.getInstance().getReference("/users/").child("$uid")
-        ref.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(p0: DataSnapshot) {
-                val user = p0.getValue(UserObject::class.java)
-                userName = "${user?.firstName} ${user?.lastName}"
-                setTitle("$userName's Workouts")
-            }
-
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-        })
-    }//pullUserName function
 
     private fun displayFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()

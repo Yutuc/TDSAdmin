@@ -19,8 +19,11 @@ import kotlinx.android.synthetic.main.activity_add_block.*
 
 class AddBlockActivity : AppCompatActivity() {
 
+    companion object {
+        var blockClicked: BlockRow? = null
+    }
+
     val blockArrayList = ArrayList<BlockObject>()
-    var blockClicked: BlockRow? = null
     val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

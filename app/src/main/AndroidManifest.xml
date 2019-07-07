@@ -9,6 +9,26 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".viewworkouts.ViewWorkoutWeekActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".viewworkouts.ChooseWeekForViewWorkoutActivity"/>
+        </activity>
+        <activity android:name=".viewworkouts.ChooseWeekForViewWorkoutActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".viewworkouts.ChooseBlockActivityForViewWorkout"/>
+        </activity>
+        <activity android:name=".viewcheckins.ViewWorkoutWeekActivityForCheckIns">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".viewcheckins.ChooseWeekActivity"/>
+        </activity>
+        <activity android:name=".viewcheckins.ChooseWeekActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".viewcheckins.ChooseBlockActivity"/>
+        </activity>
         <activity android:name=".addworkout.ChooseConditioningExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -49,7 +69,7 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
         </activity>
-        <activity android:name=".viewworkouts.ViewUserWorkouts">
+        <activity android:name=".viewworkouts.ChooseBlockActivityForViewWorkout">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".viewworkouts.ChooseUserForViewWorkoutActivity"/>
@@ -79,7 +99,7 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".addworkout.InputMainExerciseActivity"/>
         </activity>
-        <activity android:name=".viewcheckins.ViewUserWorkoutsFromCheckInActivity">
+        <activity android:name=".viewcheckins.ChooseBlockActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".viewcheckins.ViewCheckInsActivity"/>

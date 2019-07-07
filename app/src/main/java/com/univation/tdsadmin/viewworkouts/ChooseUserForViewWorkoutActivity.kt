@@ -27,6 +27,8 @@ class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
         var userChosen: UserObject? = null
     }
 
+    val adapter = GroupAdapter<ViewHolder>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_user_for_view_workout)
@@ -35,14 +37,13 @@ class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
-            val intent = Intent(this, ViewUserWorkouts::class.java)
+            val intent = Intent(this, ChooseBlockActivityForViewWorkout::class.java)
             userChosen = userClicked.user
             startActivity(intent)
         }
 
         recyclerview_choose_user_for_view_workouts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerview_choose_user_for_view_workouts.adapter =
-            adapter
+        recyclerview_choose_user_for_view_workouts.adapter = adapter
 
         pullUsers()
     }
