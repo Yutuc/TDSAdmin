@@ -31,6 +31,9 @@ class AddBlockActivity : AppCompatActivity() {
 
         setTitle("Select a block")
 
+        AddWeekToBlockActivity.workoutDaysArrayList.clear()
+        AddWeekToBlockActivity.adapter.clear()
+
         setContentView(R.layout.activity_add_block)
         recyclerview_add_block.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerview_add_block.adapter = adapter
