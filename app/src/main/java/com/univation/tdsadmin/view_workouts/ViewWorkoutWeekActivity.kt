@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewcheckins
+package com.univation.tdsadmin.view_workouts
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -15,7 +15,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_view_workout_week.*
 
-class ViewWorkoutWeekActivityForCheckIns : AppCompatActivity() {
+class ViewWorkoutWeekActivity : AppCompatActivity() {
 
     companion object {
         var mInflater: LayoutInflater? = null
@@ -25,13 +25,13 @@ class ViewWorkoutWeekActivityForCheckIns : AppCompatActivity() {
     val workoutDayArraylist = ArrayList<WorkoutDayObject>()
 
     val adapter = GroupAdapter<ViewHolder>()
-    val currentUser = ChooseUserForViewCheckInsActivity.userChosen?.uid
+    val currentUser = ChooseUserForViewWorkoutActivity.userChosen?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_workout_week)
 
-        setTitle("${ChooseUserForViewCheckInsActivity.userChosen?.firstName} ${ChooseUserForViewCheckInsActivity.userChosen?.lastName}'s ${ChooseWeekActivity.weekClicked?.weekNumber} Workouts")
+        setTitle("${ChooseUserForViewWorkoutActivity.userChosen?.firstName} ${ChooseUserForViewWorkoutActivity.userChosen?.lastName}'s ${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber} Workouts")
 
         mInflater = layoutInflater
         mContext = this
@@ -39,10 +39,9 @@ class ViewWorkoutWeekActivityForCheckIns : AppCompatActivity() {
         horizontal_recyclerview_workout_week.adapter = adapter
         pullWorkoutDays()
     }
-
     private fun pullWorkoutDays(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/$currentUser/${ChooseBlockFragment.blockClicked?.blockObject?.blockName}/${ChooseWeekActivity.weekClicked?.weekNumber}")
-        ref.addChildEventListener(object: ChildEventListener{
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/$currentUser/${ChooseBlockFragmentForViewWorkout.blockClicked?.blockObject?.blockName}/${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber}")
+        ref.addChildEventListener(object: ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }

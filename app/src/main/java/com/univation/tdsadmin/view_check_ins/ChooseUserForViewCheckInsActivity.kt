@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewcheckins
+package com.univation.tdsadmin.view_check_ins
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -96,7 +96,7 @@ class ChooseUserForViewCheckInsActivity : AppCompatActivity() {
     }//refreshRecyclerView function
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_user_activity, menu)
+        menuInflater.inflate(R.menu.choose_user_activity_menu, menu)
 
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_top_nav_menu)

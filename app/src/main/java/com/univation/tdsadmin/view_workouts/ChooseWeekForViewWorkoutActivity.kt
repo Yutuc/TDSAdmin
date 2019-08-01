@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewworkouts
+package com.univation.tdsadmin.view_workouts
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -9,7 +9,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.viewcheckins.ViewWorkoutWeekActivityForCheckIns
 import com.univation.tdsapplication.workout_adapters.WeekRow
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder

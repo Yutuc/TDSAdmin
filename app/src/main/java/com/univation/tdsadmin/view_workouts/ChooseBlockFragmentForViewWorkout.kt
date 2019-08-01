@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewworkouts
+package com.univation.tdsadmin.view_workouts
 
 
 import android.content.Intent
@@ -12,7 +12,6 @@ import com.google.firebase.database.*
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.BlockRow
 import com.univation.tdsadmin.objects.*
-import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_choose_block_from_check_in.view.*

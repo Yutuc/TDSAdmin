@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -19,32 +19,32 @@ import com.univation.tdsadmin.adapters.ChooseExerciseRow
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_choose_accessory_exercise.*
+import kotlinx.android.synthetic.main.activity_choose_core_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_alert_dialog.view.*
 
-class ChooseAccessoryExerciseActivity : AppCompatActivity() {
+class ChooseCoreExerciseActivity : AppCompatActivity() {
 
     companion object{
         val exerciseMap = HashMap<String, ExerciseDatabaseObject>()
         val exerciseMapCopy = HashMap<String, ExerciseDatabaseObject>()
-        var accessoryExerciseClicked : ExerciseDatabaseObject? = null
+        var coreExerciseClicked : ExerciseDatabaseObject? = null
     }
 
     val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_accessory_exercise)
+        setContentView(R.layout.activity_choose_core_exercise)
 
         setTitle("Select an exercise")
 
-        recyclerview_choose_accessory_exercise.adapter = adapter
-        recyclerview_choose_accessory_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerview_choose_core_exercise.adapter = adapter
+        recyclerview_choose_core_exercise.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         adapter.setOnItemClickListener { item, _ ->
             val exerciseRecyclerviewRowItem = item as ChooseExerciseRow
-            val intent = Intent(this, InputAccessoryExerciseActivity::class.java)
-            accessoryExerciseClicked = exerciseRecyclerviewRowItem.exerciseDatabaseObject
+            val intent = Intent(this, InputCoreExerciseActivity::class.java)
+            coreExerciseClicked = exerciseRecyclerviewRowItem.exerciseDatabaseObject
             startActivity(intent)
             finish()
         }
@@ -147,7 +147,7 @@ class ChooseAccessoryExerciseActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_exercise_activity, menu)
+        menuInflater.inflate(R.menu.choose_exercise_activity_menu, menu)
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_exercises_top_nav_menu)
         if(searchIcon != null){

@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
-import com.univation.tdsadmin.addworkout.ChooseUserForAddWorkoutsActivity
-import com.univation.tdsadmin.viewcheckins.ChooseUserForViewCheckInsActivity
-import com.univation.tdsadmin.viewworkouts.ChooseUserForViewWorkoutActivity
+import com.univation.tdsadmin.add_workout.ChooseUserForAddWorkoutsActivity
+import com.univation.tdsadmin.edit_user_goals.ChooseUserForEditUserGoalsActivity
+import com.univation.tdsadmin.view_check_ins.ChooseUserForViewCheckInsActivity
+import com.univation.tdsadmin.view_workouts.ChooseUserForViewWorkoutActivity
 import kotlinx.android.synthetic.main.activity_choose_action.*
 
 class ChooseActionActivity : AppCompatActivity() {
@@ -34,6 +35,11 @@ class ChooseActionActivity : AppCompatActivity() {
             val intent = Intent(this, ChooseUserForViewWorkoutActivity::class.java)
             startActivity(intent)
         }
+
+        edit_user_goals_button_choose_action.setOnClickListener {
+            val intent = Intent(this, ChooseUserForEditUserGoalsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun verifyUserIsLoggedIn(){
@@ -57,7 +63,7 @@ class ChooseActionActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_action_activity, menu)
+        menuInflater.inflate(R.menu.choose_action_activity_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 }

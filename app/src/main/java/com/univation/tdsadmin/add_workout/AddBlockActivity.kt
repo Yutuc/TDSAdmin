@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -95,7 +95,7 @@ class AddBlockActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_add_block, menu)
+        menuInflater.inflate(R.menu.add_block_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 }

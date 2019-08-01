@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

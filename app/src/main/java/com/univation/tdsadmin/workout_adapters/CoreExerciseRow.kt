@@ -1,15 +1,8 @@
 package com.univation.tdsadmin.workout_adapters
 
-import android.app.AlertDialog
 import android.graphics.Paint
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.CoreExerciseObject
-import com.univation.tdsadmin.viewcheckins.ChooseWeekActivity
-import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
-import com.univation.tdsadmin.viewcheckins.ViewWorkoutWeekActivityForCheckIns
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.core_exercise_row_check_ins.view.*

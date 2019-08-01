@@ -1,17 +1,9 @@
-package com.univation.tdsadmin.viewworkouts
+package com.univation.tdsadmin.view_workouts
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.objects.UserObject
-import com.univation.tdsadmin.viewcheckins.ChooseBlockActivity
-import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
-import com.univation.tdsadmin.viewcheckins.ChooseUserForViewCheckInsActivity
 
 class ChooseBlockActivityForViewWorkout : AppCompatActivity() {
 

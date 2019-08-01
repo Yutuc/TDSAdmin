@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewcheckins
+package com.univation.tdsadmin.view_check_ins
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -64,7 +64,7 @@ class ViewCheckInsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_check_in, menu)
+        menuInflater.inflate(R.menu.check_in_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 }

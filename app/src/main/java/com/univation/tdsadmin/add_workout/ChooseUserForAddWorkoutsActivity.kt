@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -28,7 +28,7 @@ class ChooseUserForAddWorkoutsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_user_for_add_workouts)
 
-        setTitle("Select user to add to")
+        setTitle("Select user")
 
         adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
@@ -95,7 +95,7 @@ class ChooseUserForAddWorkoutsActivity : AppCompatActivity() {
     }//refreshRecyclerView function
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_user_activity, menu)
+        menuInflater.inflate(R.menu.choose_user_activity_menu, menu)
 
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_top_nav_menu)

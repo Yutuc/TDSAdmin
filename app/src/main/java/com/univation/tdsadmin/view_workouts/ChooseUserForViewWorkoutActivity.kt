@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewworkouts
+package com.univation.tdsadmin.view_workouts
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_choose_user_for_view_workout.*
 class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
 
     companion object {
-        val adapter = GroupAdapter<ViewHolder>()
         var usersMap = HashMap<String, UserObject>()
         var usersMapCopy = HashMap<String, UserObject>()
         var userChosen: UserObject? = null
@@ -96,7 +95,7 @@ class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
     }//refreshRecyclerView function
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_user_activity, menu)
+        menuInflater.inflate(R.menu.choose_user_activity_menu, menu)
 
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_top_nav_menu)

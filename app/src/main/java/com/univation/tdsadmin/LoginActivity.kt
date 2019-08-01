@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.univation.tdsadmin.objects.AdminUser
+import com.univation.tdsadmin.objects.AdminUserObject
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
             ref.addListenerForSingleValueEvent(object: ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
-                    val currentUser = p0.getValue(AdminUser::class.java)
+                    val currentUser = p0.getValue(AdminUserObject::class.java)
                     if(!currentUser?.admin!!){
                         Toast.makeText(applicationContext, "Unauthorized user", Toast.LENGTH_SHORT).show()
                         FirebaseAuth.getInstance().signOut()

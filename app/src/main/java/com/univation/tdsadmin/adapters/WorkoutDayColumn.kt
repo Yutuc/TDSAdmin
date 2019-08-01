@@ -3,7 +3,7 @@ package com.univation.tdsadmin.adapters
 import android.content.Intent
 import android.view.View
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.addworkout.*
+import com.univation.tdsadmin.add_workout.*
 import com.univation.tdsadmin.objects.WorkoutDayObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item

@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -151,7 +151,7 @@ class ChooseMainExerciseActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_exercise_activity, menu)
+        menuInflater.inflate(R.menu.choose_exercise_activity_menu, menu)
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_exercises_top_nav_menu)
         if(searchIcon != null){

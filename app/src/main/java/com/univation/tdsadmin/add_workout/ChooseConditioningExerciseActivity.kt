@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -20,7 +20,6 @@ import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_choose_conditioning_exercise.*
-import kotlinx.android.synthetic.main.activity_choose_core_exercise.*
 import kotlinx.android.synthetic.main.add_exercise_alert_dialog.view.*
 
 class ChooseConditioningExerciseActivity : AppCompatActivity() {
@@ -148,7 +147,7 @@ class ChooseConditioningExerciseActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_choose_exercise_activity, menu)
+        menuInflater.inflate(R.menu.choose_exercise_activity_menu, menu)
         //searches the recyclerview
         val searchIcon = menu?.findItem(R.id.search_exercises_top_nav_menu)
         if(searchIcon != null){

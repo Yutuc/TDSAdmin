@@ -7,7 +7,7 @@ import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.DailyMacronutrientsObject
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.workout_daily_macro_row.view.*
+import kotlinx.android.synthetic.main.daily_macro_row.view.*
 
 class DailyMacronutrientsCard(val context: Context, val inflater: LayoutInflater, val key: String, val dailyMacronutrientsObject: DailyMacronutrientsObject): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -54,6 +54,6 @@ class DailyMacronutrientsCard(val context: Context, val inflater: LayoutInflater
     }
 
     override fun getLayout(): Int {
-        return R.layout.workout_daily_macro_row
+        return R.layout.daily_macro_row
     }
 }

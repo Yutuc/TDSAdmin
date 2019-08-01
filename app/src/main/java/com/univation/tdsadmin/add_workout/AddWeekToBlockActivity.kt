@@ -1,24 +1,18 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.WorkoutDayColumn
 import com.univation.tdsadmin.objects.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_add_week_to_block.*
-import kotlinx.android.synthetic.main.workout_day_layout.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class AddWeekToBlockActivity : AppCompatActivity() {
@@ -50,7 +44,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_day_to_week -> {
-                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, "", arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), DailyMacronutrientsObject("", "", "", "", ""))
+                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, "", arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
                 workoutDaysArrayList.add(workoutDayObject)
                 adapter.add(WorkoutDayColumn(workoutDayObject))
             }
@@ -71,7 +65,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
 
                 workoutDaysArrayList.forEach {
                     val key = ref.push().key
-                    ref.child("$key").setValue(WorkoutDayObject(it.position, key!!, it.mainArrayList, it.warmupArrayList, it.accessoryArrayList, it.coreArrayList, it.conditioningArrayList, it.dailyMacronutrientsObject!!)).addOnSuccessListener {
+                    ref.child("$key").setValue(WorkoutDayObject(it.position, key!!, it.mainArrayList, it.warmupArrayList, it.accessoryArrayList, it.coreArrayList, it.conditioningArrayList)).addOnSuccessListener {
                         Toast.makeText(this, "Successfully saved workout to user", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -85,7 +79,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_nav_menu_add_week_to_block, menu)
+        menuInflater.inflate(R.menu.add_week_to_block_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

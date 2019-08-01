@@ -9,110 +9,120 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".viewworkouts.ViewWorkoutWeekActivity">
+        <activity android:name=".edit_user_goals.EditUserGoalsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewworkouts.ChooseWeekForViewWorkoutActivity"/>
+                    android:value=".edit_user_goals.ChooseUserForEditUserGoalsActivity"/>
         </activity>
-        <activity android:name=".viewworkouts.ChooseWeekForViewWorkoutActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewworkouts.ChooseBlockActivityForViewWorkout"/>
-        </activity>
-        <activity android:name=".viewcheckins.ViewWorkoutWeekActivityForCheckIns">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewcheckins.ChooseWeekActivity"/>
-        </activity>
-        <activity android:name=".viewcheckins.ChooseWeekActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewcheckins.ChooseBlockActivity"/>
-        </activity>
-        <activity android:name=".addworkout.ChooseConditioningExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.InputConditioningExerciseActivity"/>
-        </activity>
-        <activity android:name=".addworkout.InputConditioningExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWeekToBlockActivity"/>
-        </activity>
-        <activity android:name=".addworkout.ChooseCoreExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.InputCoreExerciseActivity"/>
-        </activity>
-        <activity android:name=".addworkout.InputCoreExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWeekToBlockActivity"/>
-        </activity>
-        <activity android:name=".addworkout.ChooseAccessoryExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.InputAccessoryExerciseActivity"/>
-        </activity>
-        <activity android:name=".addworkout.InputAccessoryExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWeekToBlockActivity"/>
-        </activity>
-        <activity android:name=".addworkout.AddWeekToBlockActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddBlockActivity"/>
-        </activity>
-        <activity android:name=".addworkout.AddBlockActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.ChooseUserForAddWorkoutsActivity"/>
-        </activity>
-        <activity android:name=".viewworkouts.ChooseBlockActivityForViewWorkout">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewworkouts.ChooseUserForViewWorkoutActivity"/>
-        </activity>
-        <activity android:name=".viewworkouts.ChooseUserForViewWorkoutActivity">
+        <activity android:name=".edit_user_goals.ChooseUserForEditUserGoalsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".viewcheckins.ChooseUserForViewCheckInsActivity">
+        <activity android:name=".view_workouts.ViewWorkoutWeekActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ChooseWeekForViewWorkoutActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ChooseWeekForViewWorkoutActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ChooseBlockActivityForViewWorkout"/>
+        </activity>
+        <activity android:name=".view_check_ins.ViewWorkoutWeekActivityForCheckIns">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_check_ins.ChooseWeekActivity"/>
+        </activity>
+        <activity android:name=".view_check_ins.ChooseWeekActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_check_ins.ChooseBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.ChooseConditioningExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.InputConditioningExerciseActivity"/>
+        </activity>
+        <activity android:name=".add_workout.InputConditioningExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.AddWeekToBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.ChooseCoreExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.InputCoreExerciseActivity"/>
+        </activity>
+        <activity android:name=".add_workout.InputCoreExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.AddWeekToBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.ChooseAccessoryExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.InputAccessoryExerciseActivity"/>
+        </activity>
+        <activity android:name=".add_workout.InputAccessoryExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.AddWeekToBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.AddWeekToBlockActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.AddBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.AddBlockActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.ChooseUserForAddWorkoutsActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ChooseBlockActivityForViewWorkout">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ChooseUserForViewWorkoutActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ChooseUserForViewWorkoutActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".viewcheckins.ViewCheckInsActivity">
+        <activity android:name=".view_check_ins.ChooseUserForViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewcheckins.ChooseUserForViewCheckInsActivity"/>
+                    android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".addworkout.ChooseWarmupExerciseActivity">
+        <activity android:name=".view_check_ins.ViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.InputWarmupExerciseActivity"/>
+                    android:value=".view_check_ins.ChooseUserForViewCheckInsActivity"/>
         </activity>
-        <activity android:name=".addworkout.ChooseMainExerciseActivity">
+        <activity android:name=".add_workout.ChooseWarmupExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.InputMainExerciseActivity"/>
+                    android:value=".add_workout.InputWarmupExerciseActivity"/>
         </activity>
-        <activity android:name=".viewcheckins.ChooseBlockActivity">
+        <activity android:name=".add_workout.ChooseMainExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".viewcheckins.ViewCheckInsActivity"/>
+                    android:value=".add_workout.InputMainExerciseActivity"/>
         </activity>
-        <activity android:name=".addworkout.InputWarmupExerciseActivity">
+        <activity android:name=".view_check_ins.ChooseBlockActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWeekToBlockActivity"/>
+                    android:value=".view_check_ins.ViewCheckInsActivity"/>
         </activity>
-        <activity android:name=".addworkout.InputMainExerciseActivity">
+        <activity android:name=".add_workout.InputWarmupExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".addworkout.AddWeekToBlockActivity"/>
+                    android:value=".add_workout.AddWeekToBlockActivity"/>
+        </activity>
+        <activity android:name=".add_workout.InputMainExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
         <activity
                 android:name=".ChooseActionActivity"
@@ -129,7 +139,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".addworkout.ChooseUserForAddWorkoutsActivity"
+                android:name=".add_workout.ChooseUserForAddWorkoutsActivity"
                 android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

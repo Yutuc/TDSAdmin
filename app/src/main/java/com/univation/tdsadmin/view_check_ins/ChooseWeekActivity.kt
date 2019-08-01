@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewcheckins
+package com.univation.tdsadmin.view_check_ins
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity

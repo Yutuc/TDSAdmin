@@ -16,7 +16,6 @@ class WorkoutDayRow(val workoutDayObject : WorkoutDayObject): Item<ViewHolder>()
         verticalAdapter.add(AccessoryCard(workoutDayObject.key, workoutDayObject.accessoryArrayList!!))
         verticalAdapter.add(CoreCard(workoutDayObject.key, workoutDayObject.coreArrayList!!))
         verticalAdapter.add(ConditioningCard(workoutDayObject.key, workoutDayObject.conditioningArrayList!!))
-        verticalAdapter.add(DailyMacronutrientsCard(workoutDayObject.key, workoutDayObject.dailyMacronutrientsObject!!))
         viewHolder.itemView.vertical_recyclerview_workout.adapter = verticalAdapter
         //can create functions inside here by using ex) fun hello() {}
     }

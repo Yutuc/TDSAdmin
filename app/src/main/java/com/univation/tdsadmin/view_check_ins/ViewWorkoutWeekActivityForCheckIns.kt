@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.viewworkouts
+package com.univation.tdsadmin.view_check_ins
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -15,7 +15,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_view_workout_week.*
 
-class ViewWorkoutWeekActivity : AppCompatActivity() {
+class ViewWorkoutWeekActivityForCheckIns : AppCompatActivity() {
 
     companion object {
         var mInflater: LayoutInflater? = null
@@ -25,13 +25,13 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
     val workoutDayArraylist = ArrayList<WorkoutDayObject>()
 
     val adapter = GroupAdapter<ViewHolder>()
-    val currentUser = ChooseUserForViewWorkoutActivity.userChosen?.uid
+    val currentUser = ChooseUserForViewCheckInsActivity.userChosen?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_workout_week)
 
-        setTitle("${ChooseUserForViewWorkoutActivity.userChosen?.firstName} ${ChooseUserForViewWorkoutActivity.userChosen?.lastName}'s ${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber} Workouts")
+        setTitle("${ChooseUserForViewCheckInsActivity.userChosen?.firstName} ${ChooseUserForViewCheckInsActivity.userChosen?.lastName}'s ${ChooseWeekActivity.weekClicked?.weekNumber} Workouts")
 
         mInflater = layoutInflater
         mContext = this
@@ -39,9 +39,10 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
         horizontal_recyclerview_workout_week.adapter = adapter
         pullWorkoutDays()
     }
+
     private fun pullWorkoutDays(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/$currentUser/${ChooseBlockFragmentForViewWorkout.blockClicked?.blockObject?.blockName}/${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber}")
-        ref.addChildEventListener(object: ChildEventListener {
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/$currentUser/${ChooseBlockFragment.blockClicked?.blockObject?.blockName}/${ChooseWeekActivity.weekClicked?.weekNumber}")
+        ref.addChildEventListener(object: ChildEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -57,7 +58,7 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val workoutDayObject = p0.getValue(WorkoutDayObject::class.java)!!
                 workoutDayArraylist.add(workoutDayObject)
-                refreshRecyclerView(p0.key!!)            }
+                refreshRecyclerView()            }
 
             override fun onChildRemoved(p0: DataSnapshot) {
 
@@ -66,7 +67,7 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
         })
     }//pullWorkoutDays function
 
-    private fun refreshRecyclerView(key: String){
+    private fun refreshRecyclerView(){
         adapter.clear()
         workoutDayArraylist.forEach {
             adapter.add(WorkoutDayRow(it))

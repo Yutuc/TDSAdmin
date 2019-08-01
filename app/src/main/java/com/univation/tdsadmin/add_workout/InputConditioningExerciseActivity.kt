@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +8,6 @@ import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.ConditioningExerciseObject
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
 import kotlinx.android.synthetic.main.activity_input_conditioning_exercise.*
-import kotlinx.android.synthetic.main.activity_input_core_exercise.*
 
 class InputConditioningExerciseActivity : AppCompatActivity() {
 

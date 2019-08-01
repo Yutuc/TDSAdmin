@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.addworkout
+package com.univation.tdsadmin.add_workout
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -7,9 +7,7 @@ import android.widget.Toast
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.AccessoryExerciseObject
 import com.univation.tdsadmin.objects.ExerciseDatabaseObject
-import com.univation.tdsadmin.objects.WarmupExerciseObject
 import kotlinx.android.synthetic.main.activity_input_accessory_exercise.*
-import kotlinx.android.synthetic.main.activity_input_warmup_exercise.*
 
 class InputAccessoryExerciseActivity : AppCompatActivity() {
 

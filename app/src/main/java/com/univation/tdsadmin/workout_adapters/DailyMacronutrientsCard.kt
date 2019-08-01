@@ -1,18 +1,11 @@
 package com.univation.tdsadmin.workout_adapters
 
-import android.app.AlertDialog
 import android.graphics.Paint
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.DailyMacronutrientsObject
-import com.univation.tdsadmin.viewcheckins.ChooseWeekActivity
-import com.univation.tdsadmin.viewcheckins.ChooseBlockFragment
-import com.univation.tdsadmin.viewcheckins.ViewWorkoutWeekActivityForCheckIns
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.workout_daily_macro_row.view.*
+import kotlinx.android.synthetic.main.daily_macro_row.view.*
 
 class DailyMacronutrientsCard(val key: String, val dailyMacronutrientsObject: DailyMacronutrientsObject): Item<ViewHolder>(){
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -59,6 +52,6 @@ class DailyMacronutrientsCard(val key: String, val dailyMacronutrientsObject: Da
     }
 
     override fun getLayout(): Int {
-        return R.layout.workout_daily_macro_row
+        return R.layout.daily_macro_row
     }
 }
