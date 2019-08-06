@@ -10,6 +10,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.BlockRow
 import com.univation.tdsadmin.objects.BlockObject
@@ -40,7 +41,7 @@ class AddBlockActivity : AppCompatActivity() {
 
         pullBlocks()
 
-        adapter.setOnItemClickListener { item, view ->
+        adapter.setOnItemClickListener { item, _ ->
             blockClicked = item as BlockRow
             val intent = Intent(this, AddWeekToBlockActivity::class.java)
             startActivity(intent)
@@ -48,7 +49,7 @@ class AddBlockActivity : AppCompatActivity() {
     }
 
     private fun pullBlocks(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForAddWorkoutsActivity.userChosen?.uid}")
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -87,7 +88,7 @@ class AddBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_block -> {
-                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForAddWorkoutsActivity.userChosen?.uid}/Block ${adapter.itemCount+1}")
+                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/Block ${adapter.itemCount+1}")
                 ref.setValue(BlockObject("Block ${adapter.itemCount+1}", 0))
             }
         }

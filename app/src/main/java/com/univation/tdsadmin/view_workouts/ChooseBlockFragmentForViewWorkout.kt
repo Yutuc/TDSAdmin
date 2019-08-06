@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.database.*
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.BlockRow
 import com.univation.tdsadmin.objects.*
@@ -39,7 +40,7 @@ class ChooseBlockFragmentForViewWorkout : Fragment() {
     }
 
     private fun pullBlocks(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForViewWorkoutActivity.userChosen?.uid}")
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}")
         ref.addChildEventListener(object: ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
 

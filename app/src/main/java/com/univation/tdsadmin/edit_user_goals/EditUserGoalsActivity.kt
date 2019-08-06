@@ -5,19 +5,24 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.UserGoalsObject
 import kotlinx.android.synthetic.main.activity_edit_user_goals.*
 
 class EditUserGoalsActivity : AppCompatActivity() {
 
-    val userClicked = ChooseUserForEditUserGoalsActivity.userChosen
+    val userClicked = ChooseUserActivity.userChosen!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user_goals)
-        setTitle("Edit ${userClicked!!.firstName} ${userClicked.lastName}'s Goals")
+        setTitle("Edit ${userClicked.firstName} ${userClicked.lastName}'s Goals")
+        pullUserGoals()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -32,7 +37,7 @@ class EditUserGoalsActivity : AppCompatActivity() {
                 val goalWeight = goal_weight_edit_user_goals.text.toString().trim()
                 val protein = protein_input_edit_user_goals.text.toString().trim()
                 val carbohydrates = carbohydrates_input_edit_user_goals.text.toString().trim()
-                val fats = fats_input_edit_user_goals.text.toString().trim()
+                val fats = fat_input_edit_user_goals.text.toString().trim()
                 val calories = calories_input_edit_user_goals.text.toString().trim()
 
                 if(startWeight.isEmpty()){
@@ -62,8 +67,8 @@ class EditUserGoalsActivity : AppCompatActivity() {
     }
 
     private fun saveUserGoals(startWeight: String, goalWeight: String, protein: String, carbohydrates: String, fats: String, calories: String){
-        val userGoalsObject = UserGoalsObject("${userClicked!!.firstName} ${userClicked.lastName}",startWeight, goalWeight, protein, carbohydrates, fats, calories)
-        val ref = FirebaseDatabase.getInstance().getReference("/user-goals/${userClicked?.uid}")
+        val userGoalsObject = UserGoalsObject("${userClicked.firstName} ${userClicked.lastName}",startWeight, goalWeight, protein, carbohydrates, fats, calories)
+        val ref = FirebaseDatabase.getInstance().getReference("/user-goals/${userClicked.uid}")
         ref.setValue(userGoalsObject)
             .addOnSuccessListener {
                 Toast.makeText(this, "Successfully edited user goals", Toast.LENGTH_SHORT).show()
@@ -73,4 +78,24 @@ class EditUserGoalsActivity : AppCompatActivity() {
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }
     }//saveUserGoals function
+
+    private fun pullUserGoals(){
+        val ref = FirebaseDatabase.getInstance().getReference("/user-goals/${userClicked.uid}")
+        ref.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val userGoalObject = p0.getValue(UserGoalsObject::class.java)!!
+                start_weight_input_edit_user_goals.setText(userGoalObject.startWeight)
+                goal_weight_edit_user_goals.setText(userGoalObject.goalWeight)
+                protein_input_edit_user_goals.setText(userGoalObject.protein)
+                carbohydrates_input_edit_user_goals.setText(userGoalObject.carbohydrates)
+                fat_input_edit_user_goals.setText(userGoalObject.fat)
+                calories_input_edit_user_goals.setText(userGoalObject.calories)
+            }
+
+        })
+    }//pullUserGoals function
 }

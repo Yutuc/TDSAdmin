@@ -8,6 +8,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsapplication.workout_adapters.WeekRow
 import com.xwray.groupie.GroupAdapter
@@ -41,7 +42,7 @@ class ChooseWeekActivity : AppCompatActivity() {
     }
 
     private fun pullWeeks(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForViewCheckInsActivity.userChosen?.uid}/${ChooseBlockFragment.blockClicked?.blockObject?.blockName}")
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/${ChooseBlockFragment.blockClicked?.blockObject?.blockName}")
         ref.addChildEventListener(object : ChildEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

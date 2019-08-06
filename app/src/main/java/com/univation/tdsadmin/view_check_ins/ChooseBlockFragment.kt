@@ -11,6 +11,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.BlockRow
 import com.univation.tdsadmin.objects.BlockObject
@@ -42,7 +43,7 @@ class ChooseBlockFragment : Fragment() {
     }
 
     private fun pullBlocks(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForViewCheckInsActivity.userChosen?.uid}")
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}")
         ref.addChildEventListener(object: ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
 

@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.WorkoutDayColumn
 import com.univation.tdsadmin.objects.*
@@ -49,7 +50,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
                 adapter.add(WorkoutDayColumn(workoutDayObject))
             }
             R.id.save_week_to_block -> {
-                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForAddWorkoutsActivity.userChosen?.uid}/${AddBlockActivity.blockClicked?.blockObject?.blockName}/Week ${AddBlockActivity.blockClicked?.blockObject?.size!!+1}")
+                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/${AddBlockActivity.blockClicked?.blockObject?.blockName}/Week ${AddBlockActivity.blockClicked?.blockObject?.size!!+1}")
 
                 if(workoutDaysArrayList.isEmpty()){
                     Toast.makeText(this, "No days created", Toast.LENGTH_SHORT).show()
@@ -70,7 +71,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
                     }
                 }
 
-                val sizeRef = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserForAddWorkoutsActivity.userChosen?.uid}/${AddBlockActivity.blockClicked?.blockObject?.blockName}").child("size")
+                val sizeRef = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/${AddBlockActivity.blockClicked?.blockObject?.blockName}").child("size")
                 sizeRef.setValue(AddBlockActivity.blockClicked?.blockObject?.size!! + 1)
                 AddBlockActivity.blockClicked!!.blockObject.size += 1
             }

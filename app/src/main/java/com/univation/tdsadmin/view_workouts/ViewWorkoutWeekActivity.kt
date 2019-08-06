@@ -8,6 +8,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.WorkoutDayObject
 import com.univation.tdsadmin.workout_adapters.WorkoutDayRow
@@ -25,13 +26,13 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
     val workoutDayArraylist = ArrayList<WorkoutDayObject>()
 
     val adapter = GroupAdapter<ViewHolder>()
-    val currentUser = ChooseUserForViewWorkoutActivity.userChosen?.uid
+    val currentUser = ChooseUserActivity.userChosen?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_workout_week)
 
-        setTitle("${ChooseUserForViewWorkoutActivity.userChosen?.firstName} ${ChooseUserForViewWorkoutActivity.userChosen?.lastName}'s ${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber} Workouts")
+        setTitle("${ChooseUserActivity.userChosen?.firstName} ${ChooseUserActivity.userChosen?.lastName}'s ${ChooseWeekForViewWorkoutActivity.weekClicked?.weekNumber} Workouts")
 
         mInflater = layoutInflater
         mContext = this
@@ -57,7 +58,7 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val workoutDayObject = p0.getValue(WorkoutDayObject::class.java)!!
                 workoutDayArraylist.add(workoutDayObject)
-                refreshRecyclerView(p0.key!!)            }
+                refreshRecyclerView()            }
 
             override fun onChildRemoved(p0: DataSnapshot) {
 
@@ -66,7 +67,7 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
         })
     }//pullWorkoutDays function
 
-    private fun refreshRecyclerView(key: String){
+    private fun refreshRecyclerView(){
         adapter.clear()
         workoutDayArraylist.forEach {
             adapter.add(WorkoutDayRow(it))

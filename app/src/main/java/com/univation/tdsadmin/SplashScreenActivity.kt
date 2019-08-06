@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     sleep(SPLASH_DELAY)
-                    val intent = Intent(baseContext, ChooseActionActivity::class.java)
+                    val intent = Intent(baseContext, ChooseUserActivity::class.java)
                     startActivity(intent)
                     finish()
                 }catch (e: Exception){

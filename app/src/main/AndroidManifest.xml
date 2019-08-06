@@ -9,15 +9,37 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".edit_user_goals.EditUserGoalsActivity">
+        <activity android:name=".view_user_nutrition.EditUserFoodChoicesActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".edit_user_goals.ChooseUserForEditUserGoalsActivity"/>
+                    android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
         </activity>
-        <activity android:name=".edit_user_goals.ChooseUserForEditUserGoalsActivity">
+        <activity android:name=".view_user_nutrition.ViewUserNutritionActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ChooseBlockActivityForViewWorkout">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseActionActivity"/>
+        </activity>
+        <activity android:name=".add_workout.AddBlockActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseActionActivity"/>
+        </activity>
+        <activity android:name=".ChooseUserActivity">
+        </activity>
+        <activity android:name=".edit_user_goals.EditUserGoalsActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseActionActivity"/>
+        </activity>
+        <activity android:name=".ChooseActionActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseUserActivity"/>
         </activity>
         <activity android:name=".view_workouts.ViewWorkoutWeekActivity">
             <meta-data
@@ -74,30 +96,10 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.AddBlockActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".add_workout.ChooseUserForAddWorkoutsActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ChooseBlockActivityForViewWorkout">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ChooseUserForViewWorkoutActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ChooseUserForViewWorkoutActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseActionActivity"/>
-        </activity>
-        <activity android:name=".view_check_ins.ChooseUserForViewCheckInsActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseActionActivity"/>
-        </activity>
         <activity android:name=".view_check_ins.ViewCheckInsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_check_ins.ChooseUserForViewCheckInsActivity"/>
+                    android:value=".ChooseActionActivity"/>
         </activity>
         <activity android:name=".add_workout.ChooseWarmupExerciseActivity">
             <meta-data
@@ -125,10 +127,6 @@
                     android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
         <activity
-                android:name=".ChooseActionActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity
                 android:name=".SplashScreenActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/SplashTheme">
@@ -137,13 +135,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity
-                android:name=".add_workout.ChooseUserForAddWorkoutsActivity"
-                android:screenOrientation="portrait">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ChooseActionActivity"/>
         </activity>
         <activity
                 android:name=".LoginActivity"

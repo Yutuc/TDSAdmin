@@ -8,6 +8,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.WorkoutDayObject
 import com.univation.tdsadmin.workout_adapters.WorkoutDayRow
@@ -25,13 +26,13 @@ class ViewWorkoutWeekActivityForCheckIns : AppCompatActivity() {
     val workoutDayArraylist = ArrayList<WorkoutDayObject>()
 
     val adapter = GroupAdapter<ViewHolder>()
-    val currentUser = ChooseUserForViewCheckInsActivity.userChosen?.uid
+    val currentUser = ChooseUserActivity.userChosen?.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_workout_week)
 
-        setTitle("${ChooseUserForViewCheckInsActivity.userChosen?.firstName} ${ChooseUserForViewCheckInsActivity.userChosen?.lastName}'s ${ChooseWeekActivity.weekClicked?.weekNumber} Workouts")
+        setTitle("${ChooseUserActivity.userChosen?.firstName} ${ChooseUserActivity.userChosen?.lastName}'s ${ChooseWeekActivity.weekClicked?.weekNumber} Workouts")
 
         mInflater = layoutInflater
         mContext = this

@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.view_workouts
+package com.univation.tdsadmin
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -6,46 +6,54 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.UserRow
 import com.univation.tdsadmin.objects.UserObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_choose_user_for_view_workout.*
+import kotlinx.android.synthetic.main.activity_choose_user.*
 
-class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
+class ChooseUserActivity : AppCompatActivity() {
 
     companion object {
+        val adapter = GroupAdapter<ViewHolder>()
         var usersMap = HashMap<String, UserObject>()
         var usersMapCopy = HashMap<String, UserObject>()
         var userChosen: UserObject? = null
     }
 
-    val adapter = GroupAdapter<ViewHolder>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_user_for_view_workout)
-
+        setContentView(R.layout.activity_choose_user)
         setTitle("Select user")
+        verifyUserIsLoggedIn()
 
         adapter.setOnItemClickListener { item, _ ->
             val userClicked = item as UserRow
-            val intent = Intent(this, ChooseBlockActivityForViewWorkout::class.java)
+            val intent = Intent(this, ChooseActionActivity::class.java)
             userChosen = userClicked.user
             startActivity(intent)
         }
 
-        recyclerview_choose_user_for_view_workouts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        recyclerview_choose_user_for_view_workouts.adapter = adapter
+        recyclerview_choose_user.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        recyclerview_choose_user.adapter = adapter
 
         pullUsers()
     }
+
+    private fun verifyUserIsLoggedIn(){
+        if(FirebaseAuth.getInstance().uid == null){
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK) //clears the stack of activities
+            startActivity(intent)
+        }
+    }//verifyUserIsLoggedIn method
 
     private fun pullUsers(){
         val ref = FirebaseDatabase.getInstance().getReference("/users")
@@ -93,6 +101,18 @@ class ChooseUserForViewWorkoutActivity : AppCompatActivity() {
             adapter.add(UserRow(it))
         }
     }//refreshRecyclerView function
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.sign_out_top_nav_menu -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.choose_user_activity_menu, menu)

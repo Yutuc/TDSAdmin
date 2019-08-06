@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.database.*
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.CheckInObject
 import kotlinx.android.synthetic.main.activity_view_check_ins.*
@@ -17,12 +18,12 @@ class ViewCheckInsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_check_ins)
 
-        setTitle("${ChooseUserForViewCheckInsActivity.userChosen?.firstName} ${ChooseUserForViewCheckInsActivity.userChosen?.lastName}'s Check-In")
+        setTitle("${ChooseUserActivity.userChosen?.firstName} ${ChooseUserActivity.userChosen?.lastName}'s Check-In")
         pullCheckIn()
     }
 
     private fun pullCheckIn(){
-        val ref = FirebaseDatabase.getInstance().getReference("/check-ins").child("${ChooseUserForViewCheckInsActivity.userChosen?.uid}")
+        val ref = FirebaseDatabase.getInstance().getReference("/check-ins").child("${ChooseUserActivity.userChosen?.uid}")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

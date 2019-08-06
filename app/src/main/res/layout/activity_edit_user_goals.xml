@@ -11,53 +11,103 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/start_weight_input_edit_user_goals" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="16dp"
+            android:id="@+id/start_weight_input_edit_user_goals"
+            android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:hint="Start weight"/>
+            app:layout_constraintEnd_toEndOf="parent" android:hint="Start weight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/start_weight_title_textview_edit_user_goals"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/goal_weight_edit_user_goals"
-            app:layout_constraintTop_toBottomOf="@+id/start_weight_input_edit_user_goals"
             app:layout_constraintStart_toStartOf="@+id/start_weight_input_edit_user_goals"
-            app:layout_constraintEnd_toEndOf="@+id/start_weight_input_edit_user_goals" android:hint="Goal weight"/>
+            app:layout_constraintEnd_toEndOf="@+id/start_weight_input_edit_user_goals" android:hint="Goal weight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/goal_weight_title_textview_edit_user_goals"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/protein_input_edit_user_goals"
-            app:layout_constraintTop_toBottomOf="@+id/goal_weight_edit_user_goals"
             app:layout_constraintStart_toStartOf="@+id/goal_weight_edit_user_goals"
-            app:layout_constraintEnd_toEndOf="@+id/goal_weight_edit_user_goals" android:hint="Protein"/>
+            app:layout_constraintEnd_toEndOf="@+id/goal_weight_edit_user_goals" android:hint="Protein"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/protein_title_textview_edit_user_goals"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/carbohydrates_input_edit_user_goals"
-            app:layout_constraintTop_toBottomOf="@+id/protein_input_edit_user_goals"
             app:layout_constraintStart_toStartOf="@+id/protein_input_edit_user_goals"
-            app:layout_constraintEnd_toEndOf="@+id/protein_input_edit_user_goals" android:hint="Carbohydrates"/>
+            app:layout_constraintEnd_toEndOf="@+id/protein_input_edit_user_goals" android:hint="Carbohydrates"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/carbohydrates_title_textview_edit_user_goals"
+    />
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/fats_input_edit_user_goals"
-            app:layout_constraintTop_toBottomOf="@+id/carbohydrates_input_edit_user_goals"
+            android:id="@+id/fat_input_edit_user_goals"
             app:layout_constraintStart_toStartOf="@+id/carbohydrates_input_edit_user_goals"
-            app:layout_constraintEnd_toEndOf="@+id/carbohydrates_input_edit_user_goals" android:hint="Fats"/>
+            app:layout_constraintEnd_toEndOf="@+id/carbohydrates_input_edit_user_goals" android:hint="Fat"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/fat_title_textview_edit_user_goals"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/calories_input_edit_user_goals"
-            app:layout_constraintTop_toBottomOf="@+id/fats_input_edit_user_goals"
-            app:layout_constraintStart_toStartOf="@+id/fats_input_edit_user_goals"
-            app:layout_constraintEnd_toEndOf="@+id/fats_input_edit_user_goals" android:hint="Calories"/>
+            app:layout_constraintStart_toStartOf="@+id/fat_input_edit_user_goals"
+            app:layout_constraintEnd_toEndOf="@+id/fat_input_edit_user_goals" android:hint="Calories"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/calories_title_textview_edit_user_goals"/>
+    <TextView
+            android:text="Start weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/start_weight_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:textSize="18sp"/>
+    <TextView
+            android:text="Goal weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/goal_weight_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/start_weight_input_edit_user_goals"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:textSize="18sp"/>
+    <TextView
+            android:text="Protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/protein_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/goal_weight_edit_user_goals"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:textSize="18sp"/>
+    <TextView
+            android:text="Carbohydrates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carbohydrates_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/protein_input_edit_user_goals"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:textSize="18sp"/>
+    <TextView
+            android:text="Fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fat_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/carbohydrates_input_edit_user_goals"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:textSize="18sp"/>
+    <TextView
+            android:text="Calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/calories_title_textview_edit_user_goals" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/fat_input_edit_user_goals"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:textSize="18sp"/>
 </android.support.constraint.ConstraintLayout>
