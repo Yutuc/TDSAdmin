@@ -40,10 +40,10 @@
             app:layout_constraintStart_toStartOf="@+id/view_workouts_button"
             app:layout_constraintEnd_toEndOf="@+id/view_workouts_button"/>
     <Button
-            android:text="Edit user food choices"
+            android:text="Edit user nutrition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_user_food_choices_button_choose_action"
+            android:id="@+id/edit_user_nutrition_choices_button_choose_action"
             app:layout_constraintTop_toBottomOf="@+id/edit_user_goals_button_choose_action"
             app:layout_constraintStart_toStartOf="@+id/edit_user_goals_button_choose_action"
             app:layout_constraintEnd_toEndOf="@+id/edit_user_goals_button_choose_action"/>

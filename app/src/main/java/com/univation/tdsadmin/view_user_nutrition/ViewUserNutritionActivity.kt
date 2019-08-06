@@ -21,10 +21,12 @@ class ViewUserNutritionActivity : AppCompatActivity() {
 
     companion object {
         var typeChosen = ""
+        var foodChoicesObject: FoodChoicesObject? = null
     }
 
     val userChosen = ChooseUserActivity.userChosen
     val userClicked = ChooseUserActivity.userChosen
+
     val foodChoicesMap = HashMap<String, String>()
     val foodChoicesAdapter = GroupAdapter<ViewHolder>()
 
@@ -83,6 +85,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
 
     private fun refreshRecyclerView(){
         foodChoicesAdapter.clear()
+        foodChoicesObject = FoodChoicesObject(foodChoicesMap.get("protein")!!, foodChoicesMap.get("carbohydrates")!!, foodChoicesMap.get("fat")!!, foodChoicesMap.get("vegetables")!!)
         foodChoicesAdapter.add(ProteinChoicesColumn(foodChoicesMap.get("protein")!!))
         foodChoicesAdapter.add(CarbohydrateChoicesColumn(foodChoicesMap.get("carbohydrates")!!))
         foodChoicesAdapter.add(FatChoicesColumn(foodChoicesMap.get("fat")!!))

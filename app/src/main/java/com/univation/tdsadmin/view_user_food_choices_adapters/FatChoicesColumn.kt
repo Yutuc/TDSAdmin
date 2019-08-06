@@ -11,7 +11,7 @@ class FatChoicesColumn(val foodChoices: String) : Item<ViewHolder>(){
     }
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.fat_title_textview_fat_choices_column.text = foodChoices
+        viewHolder.itemView.food_choices_textview_fat_column.text = foodChoices
     }
 
 }

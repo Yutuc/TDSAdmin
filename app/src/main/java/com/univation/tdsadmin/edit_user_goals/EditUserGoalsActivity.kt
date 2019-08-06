@@ -87,13 +87,18 @@ class EditUserGoalsActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                val userGoalObject = p0.getValue(UserGoalsObject::class.java)!!
-                start_weight_input_edit_user_goals.setText(userGoalObject.startWeight)
-                goal_weight_edit_user_goals.setText(userGoalObject.goalWeight)
-                protein_input_edit_user_goals.setText(userGoalObject.protein)
-                carbohydrates_input_edit_user_goals.setText(userGoalObject.carbohydrates)
-                fat_input_edit_user_goals.setText(userGoalObject.fat)
-                calories_input_edit_user_goals.setText(userGoalObject.calories)
+                try{
+                    val userGoalObject = p0.getValue(UserGoalsObject::class.java)!!
+                    start_weight_input_edit_user_goals.setText(userGoalObject.startWeight)
+                    goal_weight_edit_user_goals.setText(userGoalObject.goalWeight)
+                    protein_input_edit_user_goals.setText(userGoalObject.protein)
+                    carbohydrates_input_edit_user_goals.setText(userGoalObject.carbohydrates)
+                    fat_input_edit_user_goals.setText(userGoalObject.fat)
+                    calories_input_edit_user_goals.setText(userGoalObject.calories)
+                }
+                catch(e: Exception){
+                    //When user goals is null/empty
+                }
             }
 
         })

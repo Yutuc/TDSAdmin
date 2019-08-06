@@ -38,7 +38,7 @@ class ChooseActionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        edit_user_food_choices_button_choose_action.setOnClickListener {
+        edit_user_nutrition_choices_button_choose_action.setOnClickListener {
             val intent = Intent(this, ViewUserNutritionActivity::class.java)
             startActivity(intent)
         }
