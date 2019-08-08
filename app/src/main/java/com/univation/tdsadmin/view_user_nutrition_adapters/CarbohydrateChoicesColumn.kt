@@ -1,4 +1,4 @@
-package com.univation.tdsadmin.view_user_food_choices_adapters
+package com.univation.tdsadmin.view_user_nutrition_adapters
 
 import com.univation.tdsadmin.R
 import com.xwray.groupie.Item
