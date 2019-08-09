@@ -9,6 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view_user_nutrition.EditMealActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
+        </activity>
         <activity android:name=".view_user_nutrition.AddMealActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -19,8 +24,9 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
         </activity>
-        <activity android:name=".view_user_nutrition.ViewUserNutritionActivity"
-                  android:screenOrientation="portrait">
+        <activity
+                android:name=".view_user_nutrition.ViewUserNutritionActivity"
+                android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>

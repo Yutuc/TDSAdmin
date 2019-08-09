@@ -1,5 +1,6 @@
 package com.univation.tdsadmin.view_user_nutrition
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -14,12 +15,14 @@ import com.univation.tdsadmin.view_user_nutrition_adapters.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_view_user_nutrition.*
+import kotlinx.android.synthetic.main.edit_or_delete_meal_alert_dialog.view.*
 
 class ViewUserNutritionActivity : AppCompatActivity() {
 
     companion object {
         var typeChosen = ""
         var foodChoicesObject: FoodChoicesObject? = null
+        var mealChosen: MealObject? = null
     }
 
     val userChosen = ChooseUserActivity.userChosen
@@ -64,6 +67,35 @@ class ViewUserNutritionActivity : AppCompatActivity() {
 
         recyclerview_meals.adapter = mealsAdapter
         mealsAdapter.add(MacrosPerMealTitlesRow())
+
+        mealsAdapter.setOnItemLongClickListener { item, _ ->
+            try{
+                val mealRowChosen = item as MealRow
+                mealChosen = mealRowChosen.mealObject
+
+                val dialogBuilder = AlertDialog.Builder(this)
+                var dialogView = layoutInflater.inflate(R.layout.edit_or_delete_meal_alert_dialog, null)
+                dialogBuilder.setView(dialogView)
+
+                val editOrDeleteAlertDialog = dialogBuilder.create()!!
+                editOrDeleteAlertDialog.show()
+
+                dialogView.edit_button_edit_or_delete_alert_dialog.setOnClickListener {
+                    val intent = Intent(this, EditMealActivity::class.java)
+                    startActivity(intent)
+                    editOrDeleteAlertDialog.dismiss()
+                }
+
+                dialogView.delete_button_edit_or_delete_alert_dialog.setOnClickListener {
+                    val ref = FirebaseDatabase.getInstance().getReference("/user-meals/${ChooseUserActivity.userChosen!!.uid}/${mealChosen!!.key}")
+                    ref.removeValue()
+                    editOrDeleteAlertDialog.dismiss()
+                }
+            }
+            catch(e: Exception){}
+
+            true
+        }
 
         pullFoodChoices()
         pullMeals()
@@ -128,7 +160,9 @@ class ViewUserNutritionActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
+                val mealObject = p0.getValue(MealObject::class.java)!!
+                mealArrayList.set(find(mealObject.key), mealObject)
+                refreshMealsRecyclerView()
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -138,11 +172,25 @@ class ViewUserNutritionActivity : AppCompatActivity() {
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
-
+                try {
+                    val mealRemoved = p0.getValue(MealObject::class.java)!!
+                    mealArrayList.removeAt(find(mealRemoved.key))
+                    refreshMealsRecyclerView()
+                }
+                catch(e: Exception){}
             }
 
         })
     }//pullMeals function
+
+    private fun find(key: String) : Int{
+        for(i in mealArrayList.indices){
+            if(key == mealArrayList[i].key){
+                return i
+            }
+        }
+        return -1
+    }//find function
 
     private fun refreshFoodChoicesRecyclerView(){
         foodChoicesAdapter.clear()
