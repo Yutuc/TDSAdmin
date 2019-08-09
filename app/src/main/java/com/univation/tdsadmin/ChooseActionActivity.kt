@@ -7,6 +7,7 @@ import com.univation.tdsadmin.add_workout.AddBlockActivity
 import com.univation.tdsadmin.view_user_nutrition.ViewUserNutritionActivity
 import com.univation.tdsadmin.edit_user_goals.EditUserGoalsActivity
 import com.univation.tdsadmin.view_check_ins.ViewCheckInsActivity
+import com.univation.tdsadmin.view_daily_macros.ViewDailyMacronutrientsActivity
 import com.univation.tdsadmin.view_workouts.ChooseBlockActivityForViewWorkout
 import kotlinx.android.synthetic.main.activity_choose_action.*
 
@@ -40,6 +41,11 @@ class ChooseActionActivity : AppCompatActivity() {
 
         edit_user_nutrition_choices_button_choose_action.setOnClickListener {
             val intent = Intent(this, ViewUserNutritionActivity::class.java)
+            startActivity(intent)
+        }
+
+        view_daily_macros_choose_action.setOnClickListener {
+            val intent = Intent(this, ViewDailyMacronutrientsActivity::class.java)
             startActivity(intent)
         }
     }

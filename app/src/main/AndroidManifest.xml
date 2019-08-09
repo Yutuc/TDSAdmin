@@ -9,6 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view_daily_macros.ViewDailyMacronutrientsActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ChooseActionActivity"/>
+        </activity>
         <activity android:name=".view_user_nutrition.EditMealActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
