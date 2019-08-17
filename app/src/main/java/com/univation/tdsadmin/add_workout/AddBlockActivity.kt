@@ -1,11 +1,13 @@
 package com.univation.tdsadmin.add_workout
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,6 +19,7 @@ import com.univation.tdsadmin.objects.BlockObject
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_add_block.*
+import kotlinx.android.synthetic.main.add_block_alert_dialog.view.*
 
 class AddBlockActivity : AppCompatActivity() {
 
@@ -88,8 +91,26 @@ class AddBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_block -> {
-                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/Block ${adapter.itemCount+1}")
-                ref.setValue(BlockObject("Block ${adapter.itemCount+1}", 0))
+                val dialogBuilder = AlertDialog.Builder(this)
+                val dialogView = layoutInflater.inflate(R.layout.add_block_alert_dialog, null)
+
+                dialogBuilder.setView(dialogView)
+
+                val alertDialog = dialogBuilder.create()
+                alertDialog.show()
+
+                dialogView.add_block_button_add_block_alert_dialog.setOnClickListener {
+                    val blockName = dialogView.block_name_input_add_block_alert_dialog.text.toString().trim()
+                    if(blockName.isEmpty()){
+                        Toast.makeText(this, "Please enter a block name", Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/$blockName")
+                        ref.setValue(BlockObject(blockName, 0))
+                        Toast.makeText(this, "Successfully created $blockName", Toast.LENGTH_SHORT).show()
+                        alertDialog.dismiss()
+                    }
+                }
             }
         }
         return super.onOptionsItemSelected(item)
