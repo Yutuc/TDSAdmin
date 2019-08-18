@@ -25,7 +25,7 @@ class ViewDailyMacronutrientsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_daily_macronutrients)
-        setTitle("${userChosen!!.firstName} ${userChosen.lastName}'s Daily Macros")
+        setTitle("${userChosen.firstName} ${userChosen.lastName}'s Daily Macros")
         recyclerview_daily_macros.adapter = adapter
         pullDailyMacroHistory()
     }

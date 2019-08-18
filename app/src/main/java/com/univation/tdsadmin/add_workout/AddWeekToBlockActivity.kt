@@ -45,7 +45,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.add_day_to_week -> {
-                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, "", arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
+                val workoutDayObject = WorkoutDayObject(workoutDaysArrayList.size, "", false,  arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
                 workoutDaysArrayList.add(workoutDayObject)
                 adapter.add(WorkoutDayColumn(workoutDayObject))
             }
@@ -58,7 +58,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
                 }
 
                 workoutDaysArrayList.forEach {
-                    if(it.mainArrayList?.isEmpty()!! || it.accessoryArrayList?.isEmpty()!! || it.coreArrayList?.isEmpty()!! || it.conditioningArrayList?.isEmpty()!! || it.warmupArrayList?.isEmpty()!!){
+                    if(it.mainArrayList?.isEmpty()!! || it.accessoryArrayList?.isEmpty()!! || it.coreArrayList?.isEmpty()!! /*|| it.conditioningArrayList?.isEmpty()!!*/ || it.warmupArrayList?.isEmpty()!!){
                         Toast.makeText(this, "Empty field detected", Toast.LENGTH_SHORT).show()
                         return true
                     }
@@ -66,7 +66,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
 
                 workoutDaysArrayList.forEach {
                     val key = ref.push().key
-                    ref.child("$key").setValue(WorkoutDayObject(it.position, key!!, it.mainArrayList, it.warmupArrayList, it.accessoryArrayList, it.coreArrayList, it.conditioningArrayList)).addOnSuccessListener {
+                    ref.child("$key").setValue(WorkoutDayObject(it.position, key!!, false, it.mainArrayList, it.warmupArrayList, it.accessoryArrayList, it.coreArrayList, it.conditioningArrayList)).addOnSuccessListener {
                         Toast.makeText(this, "Successfully saved workout to user", Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -15,7 +15,7 @@ import com.univation.tdsadmin.view_user_nutrition_adapters.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_view_user_nutrition.*
-import kotlinx.android.synthetic.main.edit_or_delete_meal_alert_dialog.view.*
+import kotlinx.android.synthetic.main.edit_or_delete_alert_dialog.view.*
 
 class ViewUserNutritionActivity : AppCompatActivity() {
 
@@ -74,7 +74,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
                 mealChosen = mealRowChosen.mealObject
 
                 val dialogBuilder = AlertDialog.Builder(this)
-                var dialogView = layoutInflater.inflate(R.layout.edit_or_delete_meal_alert_dialog, null)
+                var dialogView = layoutInflater.inflate(R.layout.edit_or_delete_alert_dialog, null)
                 dialogBuilder.setView(dialogView)
 
                 val editOrDeleteAlertDialog = dialogBuilder.create()!!
