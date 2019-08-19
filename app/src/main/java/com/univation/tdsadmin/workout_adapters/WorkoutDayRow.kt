@@ -11,14 +11,32 @@ class WorkoutDayRow(val workoutDayObject : WorkoutDayObject): Item<ViewHolder>()
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val verticalAdapter = GroupAdapter<ViewHolder>()
-        verticalAdapter.add(WarmupCard(workoutDayObject.warmupArrayList!!))
-        verticalAdapter.add(MainCard(workoutDayObject.key, workoutDayObject.mainArrayList!!))
-        verticalAdapter.add(AccessoryCard(workoutDayObject.key, workoutDayObject.accessoryArrayList!!))
-        verticalAdapter.add(CoreCard(workoutDayObject.key, workoutDayObject.coreArrayList!!))
+
+        try{
+            verticalAdapter.add(WarmupCard(workoutDayObject.key, workoutDayObject.warmupArrayList!!))
+        }
+        catch (e: Exception){}
+
+        try{
+            verticalAdapter.add(MainCard(workoutDayObject.key, workoutDayObject.mainArrayList!!))
+        }
+        catch (e: Exception){}
+
+        try{
+            verticalAdapter.add(AccessoryCard(workoutDayObject.key, workoutDayObject.accessoryArrayList!!))
+        }
+        catch (e: Exception){}
+
+        try{
+            verticalAdapter.add(CoreCard(workoutDayObject.key, workoutDayObject.coreArrayList!!))
+        }
+        catch (e: Exception){}
+
         try{
             verticalAdapter.add(ConditioningCard(workoutDayObject.key, workoutDayObject.conditioningArrayList!!))
         }
         catch (e: Exception){}
+
         viewHolder.itemView.vertical_recyclerview_workout.adapter = verticalAdapter
         //can create functions inside here by using ex) fun hello() {}
     }

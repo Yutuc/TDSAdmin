@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -52,13 +53,16 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
+                val workoutDayObject = p0.getValue(WorkoutDayObject::class.java)!!
+                workoutDayArraylist.set(workoutDayObject.position, workoutDayObject)
+                refreshRecyclerView()
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val workoutDayObject = p0.getValue(WorkoutDayObject::class.java)!!
                 workoutDayArraylist.add(workoutDayObject)
-                refreshRecyclerView()            }
+                refreshRecyclerView()
+            }
 
             override fun onChildRemoved(p0: DataSnapshot) {
 

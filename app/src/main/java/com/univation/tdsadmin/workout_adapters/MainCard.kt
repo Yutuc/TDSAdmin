@@ -1,12 +1,18 @@
 package com.univation.tdsadmin.workout_adapters
 
 import android.app.AlertDialog
+import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
+import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.objects.MainExerciseObject
+import com.univation.tdsadmin.view_workouts.ChooseBlockFragmentForViewWorkout
+import com.univation.tdsadmin.view_workouts.ChooseWeekForViewWorkoutActivity
 import com.univation.tdsadmin.view_workouts.ViewWorkoutWeekActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.edit_or_delete_alert_dialog.view.*
 import kotlinx.android.synthetic.main.main_card.view.*
 
 class MainCard (val key: String, val mainArrayList: ArrayList<MainExerciseObject>) : Item<ViewHolder>(){
@@ -18,6 +24,9 @@ class MainCard (val key: String, val mainArrayList: ArrayList<MainExerciseObject
         }
         viewHolder.itemView.main_card_recyclerview.adapter = mainCardAdapter
         mainCardAdapter.setOnItemLongClickListener { item, _ ->
+            val mainRow = item as MainExerciseRow
+            val mainChosen = mainRow.mainExerciseObject
+
             val dialogBuilder = AlertDialog.Builder(ViewWorkoutWeekActivity.mContext)
             val dialogView = ViewWorkoutWeekActivity.mInflater?.inflate(R.layout.edit_or_delete_alert_dialog, null)!!
 
@@ -25,6 +34,20 @@ class MainCard (val key: String, val mainArrayList: ArrayList<MainExerciseObject
 
             val alertDialog = dialogBuilder.create()
             alertDialog.show()
+
+            dialogView.edit_button_edit_or_delete_alert_dialog.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            dialogView.delete_button_edit_or_delete_alert_dialog.setOnClickListener {
+                mainArrayList.remove(mainChosen)
+                val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen!!.uid}/${ChooseBlockFragmentForViewWorkout.blockClicked!!.blockObject.blockName}/${ChooseWeekForViewWorkoutActivity.weekClicked!!.weekNumber}/$key/mainArrayList")
+                ref.setValue(mainArrayList)
+                    .addOnSuccessListener {
+                        Toast.makeText(ViewWorkoutWeekActivity.mContext, "Successfully deleted workout", Toast.LENGTH_SHORT).show()
+                    }
+                alertDialog.dismiss()
+            }
             true
         }
     }
