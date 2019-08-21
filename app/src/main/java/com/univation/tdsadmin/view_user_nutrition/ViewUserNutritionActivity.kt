@@ -21,16 +21,16 @@ class ViewUserNutritionActivity : AppCompatActivity() {
 
     companion object {
         var typeChosen = ""
-        var foodChoicesObject: FoodChoicesObject? = null
+        //var foodChoicesObject: FoodChoicesObject? = null
         var mealChosen: MealObject? = null
     }
 
     val userChosen = ChooseUserActivity.userChosen
     val userClicked = ChooseUserActivity.userChosen
 
-    var foodChoicesClickedPosition = 0
+    /*var foodChoicesClickedPosition = 0
     val foodChoicesMap = HashMap<String, String>()
-    val foodChoicesAdapter = GroupAdapter<ViewHolder>()
+    val foodChoicesAdapter = GroupAdapter<ViewHolder>()*/
 
     val mealsAdapter = GroupAdapter<ViewHolder>()
     val mealArrayList = ArrayList<MealObject>()
@@ -39,9 +39,9 @@ class ViewUserNutritionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_user_nutrition)
         setTitle("Edit ${userClicked!!.firstName} ${userClicked.lastName}'s Nutrition")
-        recyclerview_food_choices.adapter = foodChoicesAdapter
+        //recyclerview_food_choices.adapter = foodChoicesAdapter
 
-        foodChoicesAdapter.setOnItemLongClickListener { item, _ ->
+        /*foodChoicesAdapter.setOnItemLongClickListener { item, _ ->
             when (item) {
                 is ProteinChoicesColumn -> {
                     typeChosen = "Protein"
@@ -63,7 +63,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
             val intent = Intent(this, EditUserFoodChoicesActivity::class.java)
             startActivity(intent)
             true
-        }
+        }*/
 
         recyclerview_meals.adapter = mealsAdapter
         mealsAdapter.add(MacrosPerMealTitlesRow())
@@ -97,7 +97,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
             true
         }
 
-        pullFoodChoices()
+        //pullFoodChoices()
         pullMeals()
     }
 
@@ -116,7 +116,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun pullFoodChoices(){
+    /*private fun pullFoodChoices(){
         val ref = FirebaseDatabase.getInstance().getReference("/user-nutrition/${userChosen!!.uid}")
         ref.addChildEventListener(object: ChildEventListener{
             override fun onCancelled(p0: DatabaseError) {
@@ -146,7 +146,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
             }
 
         })
-    }//pullFoodChoices function
+    }//pullFoodChoices function*/
 
     private fun pullMeals(){
         val ref = FirebaseDatabase.getInstance().getReference("/user-meals/${ChooseUserActivity.userChosen!!.uid}")
@@ -192,14 +192,14 @@ class ViewUserNutritionActivity : AppCompatActivity() {
         return -1
     }//find function
 
-    private fun refreshFoodChoicesRecyclerView(){
+    /*private fun refreshFoodChoicesRecyclerView(){
         foodChoicesAdapter.clear()
         foodChoicesObject = FoodChoicesObject(foodChoicesMap.get("protein")!!, foodChoicesMap.get("carbohydrates")!!, foodChoicesMap.get("fat")!!, foodChoicesMap.get("vegetables")!!)
         foodChoicesAdapter.add(ProteinChoicesColumn(foodChoicesMap.get("protein")!!))
         foodChoicesAdapter.add(CarbohydrateChoicesColumn(foodChoicesMap.get("carbohydrates")!!))
         foodChoicesAdapter.add(FatChoicesColumn(foodChoicesMap.get("fat")!!))
         foodChoicesAdapter.add(VegetableChoicesColumn(foodChoicesMap.get("vegetables")!!))
-    }//refreshRecyclerView function
+    }//refreshRecyclerView function*/
 
     private fun refreshMealsRecyclerView(){
         mealsAdapter.clear()
@@ -210,7 +210,7 @@ class ViewUserNutritionActivity : AppCompatActivity() {
     }//refreshMealsRecyclerView function
 
     override fun onResume() {
-        recyclerview_food_choices.scrollToPosition(foodChoicesClickedPosition)
+        //recyclerview_food_choices.scrollToPosition(foodChoicesClickedPosition)
         super.onResume()
     }
 

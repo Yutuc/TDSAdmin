@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.activity_edit_user_food_choices.*
 class EditUserFoodChoicesActivity : AppCompatActivity() {
 
     val userChosen = ChooseUserActivity.userChosen
-    val foodChoicesObject = ViewUserNutritionActivity.foodChoicesObject!!
+    //val foodChoicesObject = ViewUserNutritionActivity.foodChoicesObject!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user_food_choices)
         setTitle(ViewUserNutritionActivity.typeChosen)
 
-        when(ViewUserNutritionActivity.typeChosen){
+        /*when(ViewUserNutritionActivity.typeChosen){
             "Protein" -> {
                 food_choices_input_edittext_edit_user_food_choices.setText(foodChoicesObject.protein)
             }
@@ -35,7 +35,7 @@ class EditUserFoodChoicesActivity : AppCompatActivity() {
             "Vegetables" -> {
                 food_choices_input_edittext_edit_user_food_choices.setText(foodChoicesObject.vegetables)
             }
-        }
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <TextView
+            <!--<TextView
                     android:text="Food Choices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -27,8 +27,8 @@
                     android:textSize="24sp" android:textAlignment="center"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-            />
-            <android.support.v7.widget.RecyclerView
+            />-->
+            <!--<android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
@@ -36,13 +36,13 @@
                     android:id="@+id/recyclerview_food_choices"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp"/>-->
             <TextView
                     android:text="Macros per meal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_food_choices"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" android:textSize="24sp" android:textAlignment="center"
             />
