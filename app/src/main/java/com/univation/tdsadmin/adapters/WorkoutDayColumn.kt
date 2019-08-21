@@ -29,10 +29,12 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
 
         mainAdapter.setOnItemLongClickListener { item, _ ->
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
-            val mainExerciseClicked = item as WorkoutExerciseRow
-            val intent = Intent(AddWeekToBlockActivity.context, InputMainExerciseActivity::class.java)
-            AddWeekToBlockActivity.context?.startActivity(intent)
-            AddWeekToBlockActivity.mainExerciseEdit = mainExerciseClicked.exerciseObject
+            try{
+                val mainExerciseClicked = item as WorkoutExerciseRow
+                val intent = Intent(AddWeekToBlockActivity.context, InputMainExerciseActivity::class.java)
+                AddWeekToBlockActivity.context?.startActivity(intent)
+                AddWeekToBlockActivity.mainExerciseEdit = mainExerciseClicked.exerciseObject
+            }catch (e: Exception){}
             true
         }
 
@@ -47,10 +49,12 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
 
         warmupAdapter.setOnItemLongClickListener { item, _ ->
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
-            val warmupExerciseClicked = item as WarmupExerciseRow
-            val intent = Intent(AddWeekToBlockActivity.context, InputWarmupExerciseActivity::class.java)
-            AddWeekToBlockActivity.context?.startActivity(intent)
-            AddWeekToBlockActivity.warmupExerciseEdit = warmupExerciseClicked.exerciseObject
+            try{
+                val warmupExerciseClicked = item as WarmupExerciseRow
+                val intent = Intent(AddWeekToBlockActivity.context, InputWarmupExerciseActivity::class.java)
+                AddWeekToBlockActivity.context?.startActivity(intent)
+                AddWeekToBlockActivity.warmupExerciseEdit = warmupExerciseClicked.exerciseObject
+            }catch (e: Exception){}
             true
         }
 
@@ -65,10 +69,12 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
 
         accessoryAdapter.setOnItemLongClickListener { item, _ ->
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
-            val accessoryExerciseClicked = item as AccessoryExerciseRow
-            val intent = Intent(AddWeekToBlockActivity.context, InputAccessoryExerciseActivity::class.java)
-            AddWeekToBlockActivity.context?.startActivity(intent)
-            AddWeekToBlockActivity.accessoryExerciseEdit = accessoryExerciseClicked.exerciseObject
+            try{
+                val accessoryExerciseClicked = item as AccessoryExerciseRow
+                val intent = Intent(AddWeekToBlockActivity.context, InputAccessoryExerciseActivity::class.java)
+                AddWeekToBlockActivity.context?.startActivity(intent)
+                AddWeekToBlockActivity.accessoryExerciseEdit = accessoryExerciseClicked.exerciseObject
+            }catch (e: Exception){}
             true
         }
 
@@ -83,10 +89,12 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
 
         coreAdapter.setOnItemLongClickListener { item, _ ->
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
-            val coreExerciseClicked = item as CoreExerciseRow
-            val intent = Intent(AddWeekToBlockActivity.context, InputCoreExerciseActivity::class.java)
-            AddWeekToBlockActivity.context?.startActivity(intent)
-            AddWeekToBlockActivity.coreExerciseEdit = coreExerciseClicked.exerciseObject
+            try{
+                val coreExerciseClicked = item as CoreExerciseRow
+                val intent = Intent(AddWeekToBlockActivity.context, InputCoreExerciseActivity::class.java)
+                AddWeekToBlockActivity.context?.startActivity(intent)
+                AddWeekToBlockActivity.coreExerciseEdit = coreExerciseClicked.exerciseObject
+            }catch (e: Exception){}
             true
         }
 
@@ -101,10 +109,12 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
 
         conditioningAdapter.setOnItemLongClickListener { item, _ ->
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
-            val conditioningExerciseClicked = item as ConditioningExerciseRow
-            val intent = Intent(AddWeekToBlockActivity.context, InputConditioningExerciseActivity::class.java)
-            AddWeekToBlockActivity.context?.startActivity(intent)
-            AddWeekToBlockActivity.conditioningExerciseEdit = conditioningExerciseClicked.exerciseObject
+            try{
+                val conditioningExerciseClicked = item as ConditioningExerciseRow
+                val intent = Intent(AddWeekToBlockActivity.context, InputConditioningExerciseActivity::class.java)
+                AddWeekToBlockActivity.context?.startActivity(intent)
+                AddWeekToBlockActivity.conditioningExerciseEdit = conditioningExerciseClicked.exerciseObject
+            }catch (e: Exception){}
             true
         }
 

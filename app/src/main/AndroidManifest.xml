@@ -9,6 +9,56 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view_workouts.ViewWorkoutsChooseAccessoryExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditAccessoryActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseConditioningExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditConditioningActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseCoreExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditCoreActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseMainExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditMainActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseWarmupExerciseActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditWarmupActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditConditioningActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditCoreActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditMainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditAccessoryActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditWarmupActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
         <activity android:name=".view_daily_macros.ViewDailyMacronutrientsActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"

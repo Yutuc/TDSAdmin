@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
-import com.univation.tdsadmin.objects.WorkoutDayObject
+import com.univation.tdsadmin.objects.*
 import com.univation.tdsadmin.workout_adapters.WorkoutDayRow
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -22,6 +22,12 @@ class ViewWorkoutWeekActivity : AppCompatActivity() {
     companion object {
         var mInflater: LayoutInflater? = null
         var mContext: Context? = null
+
+        var mainExerciseEdit : MainExerciseObject? = null
+        var warmupExerciseEdit : WarmupExerciseObject? = null
+        var accessoryExerciseEdit : AccessoryExerciseObject? = null
+        var coreExerciseEdit : CoreExerciseObject? = null
+        var conditioningExerciseEdit : ConditioningExerciseObject? = null
     }
 
     val workoutDayArraylist = ArrayList<WorkoutDayObject>()
