@@ -9,6 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view_daily_macros.ViewDailyMacroBlockActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_daily_macros.SelectDailyMacroBlockActivity"/>
+        </activity>
         <activity android:name=".view_workouts.ViewWorkoutsChooseAccessoryExerciseActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
@@ -59,7 +64,7 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_workouts.ViewWorkoutWeekActivity"/>
         </activity>
-        <activity android:name=".view_daily_macros.ViewDailyMacronutrientsActivity">
+        <activity android:name=".view_daily_macros.SelectDailyMacroBlockActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
