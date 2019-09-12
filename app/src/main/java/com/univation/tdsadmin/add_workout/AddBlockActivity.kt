@@ -105,8 +105,8 @@ class AddBlockActivity : AppCompatActivity() {
                         Toast.makeText(this, "Please enter a block name", Toast.LENGTH_SHORT).show()
                     }
                     else {
-                        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/$blockName")
-                        ref.setValue(BlockObject(blockName, 0))
+                        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}").push()
+                        ref.setValue(BlockObject(ref.key!!, blockName, 0))
                         Toast.makeText(this, "Successfully created $blockName", Toast.LENGTH_SHORT).show()
                         alertDialog.dismiss()
                     }
