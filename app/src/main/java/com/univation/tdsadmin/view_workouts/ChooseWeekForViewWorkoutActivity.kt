@@ -43,7 +43,7 @@ class ChooseWeekForViewWorkoutActivity : AppCompatActivity() {
     }
 
     private fun pullWeeks(){
-        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/${ChooseBlockFragmentForViewWorkout.blockClicked?.blockObject?.blockName}")
+        val ref = FirebaseDatabase.getInstance().getReference("/workouts/${ChooseUserActivity.userChosen?.uid}/${ChooseBlockFragmentForViewWorkout.blockClicked?.blockObject?.key}")
         ref.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -59,7 +59,7 @@ class ChooseWeekForViewWorkoutActivity : AppCompatActivity() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val week = p0.key!!
-                if(week != "blockName" && week != "size"){
+                if(week != "key" && week != "blockName" && week != "size"){
                     weekArrayList.add(week)
                     refreshRecyclerView()
                 }
