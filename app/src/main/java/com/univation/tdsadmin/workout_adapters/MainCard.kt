@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
 import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
+import com.univation.tdsadmin.add_workout.AddWeekToBlockActivity
 import com.univation.tdsadmin.objects.MainExerciseObject
 import com.univation.tdsadmin.view_workouts.ChooseBlockFragmentForViewWorkout
 import com.univation.tdsadmin.view_workouts.ChooseWeekForViewWorkoutActivity
@@ -14,8 +15,10 @@ import com.univation.tdsadmin.view_workouts.ViewWorkoutWeekActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.delete_workout_day_alert_dialog.view.*
 import kotlinx.android.synthetic.main.edit_or_delete_alert_dialog.view.*
 import kotlinx.android.synthetic.main.main_card.view.*
+import kotlinx.android.synthetic.main.main_titles_row.view.*
 import java.lang.Exception
 
 class MainCard (val key: String, val mainArrayList: ArrayList<MainExerciseObject>) : Item<ViewHolder>(){
@@ -33,6 +36,7 @@ class MainCard (val key: String, val mainArrayList: ArrayList<MainExerciseObject
         }
         viewHolder.itemView.main_card_recyclerview.adapter = mainCardAdapter
         mainCardAdapter.setOnItemLongClickListener { item, _ ->
+
             try{
                 val mainRow = item as MainExerciseRow
                 val mainChosen = mainRow.mainExerciseObject

@@ -1,8 +1,11 @@
 package com.univation.tdsadmin.add_workout
 
+import android.app.AlertDialog
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -11,15 +14,19 @@ import com.univation.tdsadmin.ChooseUserActivity
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.adapters.WorkoutDayColumn
 import com.univation.tdsadmin.objects.*
+import com.univation.tdsadmin.view_workouts.ViewWorkoutWeekActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_add_week_to_block.*
+import kotlinx.android.synthetic.main.delete_workout_day_alert_dialog.view.*
+import kotlinx.android.synthetic.main.main_titles_row.view.*
 import kotlin.collections.ArrayList
 
 class AddWeekToBlockActivity : AppCompatActivity() {
 
     companion object {
         var context: Context? = null
+        var mLayoutInflater: LayoutInflater? = null
 
         var workoutDaysArrayList = ArrayList<WorkoutDayObject>()
         var workoutDayClickedPosition = 0
@@ -38,6 +45,7 @@ class AddWeekToBlockActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_week_to_block)
         setTitle("Create a week")
         context = this
+        mLayoutInflater = layoutInflater
         horizontal_recyclerview_weeks.adapter = adapter
         horizontal_recyclerview_weeks.scrollToPosition(workoutDayClickedPosition)
     }

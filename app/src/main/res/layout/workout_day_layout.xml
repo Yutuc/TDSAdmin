@@ -63,11 +63,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent" android:id="@+id/main_exercises_recyclerview"
-                    android:layout_marginTop="8dp"/>
+                    app:layout_constraintTop_toBottomOf="@id/delete_day_button" android:layout_marginTop="8dp"/>
             <Button
                     android:text="Add Main Exercise"
                     android:layout_width="0dp"
@@ -104,6 +103,15 @@
                     android:layout_marginEnd="16dp" android:id="@+id/core_exercises_recyclerview"
                     android:layout_marginTop="8dp">
             </android.support.v7.widget.RecyclerView>
+            <Button
+                    android:text="Delete day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/delete_day_button"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    android:background="#B71C1C" android:textColor="@android:color/white"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

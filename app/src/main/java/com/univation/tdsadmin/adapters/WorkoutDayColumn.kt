@@ -1,13 +1,17 @@
 package com.univation.tdsadmin.adapters
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.view.View
 import com.univation.tdsadmin.R
 import com.univation.tdsadmin.add_workout.*
 import com.univation.tdsadmin.objects.WorkoutDayObject
+import com.univation.tdsadmin.view_workouts.ViewWorkoutWeekActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_add_week_to_block.*
+import kotlinx.android.synthetic.main.delete_workout_day_alert_dialog.view.*
 import kotlinx.android.synthetic.main.workout_day_layout.view.*
 
 class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder>() {
@@ -122,6 +126,27 @@ class WorkoutDayColumn (val workoutDayObject: WorkoutDayObject): Item<ViewHolder
             AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
             val intent = Intent(AddWeekToBlockActivity.context, InputConditioningExerciseActivity::class.java)
             AddWeekToBlockActivity.context?.startActivity(intent)
+        }
+
+        viewHolder.itemView.delete_day_button.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(AddWeekToBlockActivity.context)
+            val dialogView = AddWeekToBlockActivity.mLayoutInflater!!.inflate(R.layout.delete_workout_day_alert_dialog, null)
+
+            dialogBuilder.setView(dialogView)
+            dialogBuilder.setTitle("Warning")
+
+            val alertDialog = dialogBuilder.create()
+            alertDialog.show()
+
+            dialogView.confirm_button_delete_workout_day.setOnClickListener {
+                AddWeekToBlockActivity.workoutDayClickedPosition = workoutDayObject.position
+                AddWeekToBlockActivity.workoutDaysArrayList.removeAt(workoutDayObject.position)
+                AddWeekToBlockActivity.adapter.clear()
+                AddWeekToBlockActivity.workoutDaysArrayList.forEach {
+                    AddWeekToBlockActivity.adapter.add(WorkoutDayColumn(it))
+                }
+                alertDialog.dismiss()
+            }
         }
     }
 
