@@ -58,7 +58,7 @@ class ChooseWeekActivity : AppCompatActivity() {
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val week = p0.key!!
-                if(week != "blockName" && week != "size"){
+                if(week != "key" && week != "blockName" && week != "size"){
                     weekArrayList.add(week)
                     refreshRecyclerView()
                 }

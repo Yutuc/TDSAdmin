@@ -7,7 +7,7 @@ import com.univation.tdsadmin.add_workout.AddBlockActivity
 import com.univation.tdsadmin.view_user_nutrition.ViewUserNutritionActivity
 import com.univation.tdsadmin.edit_user_goals.EditUserGoalsActivity
 import com.univation.tdsadmin.view_check_ins.ViewCheckInsActivity
-import com.univation.tdsadmin.view_daily_macros.SelectDailyMacroBlockActivity
+import com.univation.tdsadmin.view_daily_macros.ViewUserDailyMacrosActivity
 import com.univation.tdsadmin.view_workouts.ChooseBlockActivityForViewWorkout
 import kotlinx.android.synthetic.main.activity_choose_action.*
 
@@ -17,7 +17,7 @@ class ChooseActionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_action)
 
-        setTitle("Choose action")
+        setTitle("${ChooseUserActivity.userChosen?.firstName} ${ChooseUserActivity.userChosen?.lastName}'s File")
 
         add_workout_button.setOnClickListener {
             val intent = Intent(this, AddBlockActivity::class.java)
@@ -45,7 +45,7 @@ class ChooseActionActivity : AppCompatActivity() {
         }
 
         view_daily_macros_choose_action.setOnClickListener {
-            val intent = Intent(this, SelectDailyMacroBlockActivity::class.java)
+            val intent = Intent(this, ViewUserDailyMacrosActivity::class.java)
             startActivity(intent)
         }
     }

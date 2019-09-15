@@ -9,77 +9,86 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".view_daily_macros.ViewDailyMacroBlockActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_daily_macros.SelectDailyMacroBlockActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ViewWorkoutsChooseAccessoryExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.EditAccessoryActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ViewWorkoutsChooseConditioningExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.EditConditioningActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ViewWorkoutsChooseCoreExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.EditCoreActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ViewWorkoutsChooseMainExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.EditMainActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.ViewWorkoutsChooseWarmupExerciseActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.EditWarmupActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.EditConditioningActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.EditCoreActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.EditMainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.EditAccessoryActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
-        </activity>
-        <activity android:name=".view_workouts.EditWarmupActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
-        </activity>
-        <activity android:name=".view_daily_macros.SelectDailyMacroBlockActivity">
+        <activity android:name=".view_daily_macros.ViewUserDailyMacrosActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".view_user_nutrition.EditMealActivity">
+        <activity android:name=".view_workouts.ViewWorkoutsChooseAccessoryExerciseActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditAccessoryActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseConditioningExerciseActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditConditioningActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseCoreExerciseActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditCoreActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseMainExerciseActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditMainActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.ViewWorkoutsChooseWarmupExerciseActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.EditWarmupActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditConditioningActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditCoreActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditMainActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditAccessoryActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_workouts.EditWarmupActivity"
+                  android:screenOrientation="portrait">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".view_workouts.ViewWorkoutWeekActivity"/>
+        </activity>
+        <activity android:name=".view_user_nutrition.EditMealActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
         </activity>
-        <activity android:name=".view_user_nutrition.AddMealActivity">
+        <activity android:name=".view_user_nutrition.AddMealActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
         </activity>
-        <activity android:name=".view_user_nutrition.EditUserFoodChoicesActivity">
+        <activity android:name=".view_user_nutrition.EditUserFoodChoicesActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_user_nutrition.ViewUserNutritionActivity"/>
@@ -91,109 +100,131 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".view_workouts.ChooseBlockActivityForViewWorkout">
+        <activity android:name=".view_workouts.ChooseBlockActivityForViewWorkout"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".add_workout.AddBlockActivity">
+        <activity android:name=".add_workout.AddBlockActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".ChooseUserActivity">
+        <activity android:name=".ChooseUserActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".edit_user_goals.EditUserGoalsActivity">
+        <activity android:name=".edit_user_goals.EditUserGoalsActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".ChooseActionActivity">
+        <activity android:name=".ChooseActionActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseUserActivity"/>
         </activity>
-        <activity android:name=".view_workouts.ViewWorkoutWeekActivity">
+        <activity android:name=".view_workouts.ViewWorkoutWeekActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_workouts.ChooseWeekForViewWorkoutActivity"/>
         </activity>
-        <activity android:name=".view_workouts.ChooseWeekForViewWorkoutActivity">
+        <activity android:name=".view_workouts.ChooseWeekForViewWorkoutActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_workouts.ChooseBlockActivityForViewWorkout"/>
         </activity>
-        <activity android:name=".view_check_ins.ViewWorkoutWeekActivityForCheckIns">
+        <activity android:name=".view_check_ins.ViewWorkoutWeekActivityForCheckIns"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_check_ins.ChooseWeekActivity"/>
         </activity>
-        <activity android:name=".view_check_ins.ChooseWeekActivity">
+        <activity android:name=".view_check_ins.ChooseWeekActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_check_ins.ChooseBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.ChooseConditioningExerciseActivity">
+        <activity android:name=".add_workout.ChooseConditioningExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.InputConditioningExerciseActivity"/>
         </activity>
-        <activity android:name=".add_workout.InputConditioningExerciseActivity">
+        <activity android:name=".add_workout.InputConditioningExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.ChooseCoreExerciseActivity">
+        <activity android:name=".add_workout.ChooseCoreExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.InputCoreExerciseActivity"/>
         </activity>
-        <activity android:name=".add_workout.InputCoreExerciseActivity">
+        <activity android:name=".add_workout.InputCoreExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.ChooseAccessoryExerciseActivity">
+        <activity android:name=".add_workout.ChooseAccessoryExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.InputAccessoryExerciseActivity"/>
         </activity>
-        <activity android:name=".add_workout.InputAccessoryExerciseActivity">
+        <activity android:name=".add_workout.InputAccessoryExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.AddWeekToBlockActivity">
+        <activity android:name=".add_workout.AddWeekToBlockActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddBlockActivity"/>
         </activity>
-        <activity android:name=".view_check_ins.ViewCheckInsActivity">
+        <activity android:name=".view_check_ins.ViewCheckInsActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ChooseActionActivity"/>
         </activity>
-        <activity android:name=".add_workout.ChooseWarmupExerciseActivity">
+        <activity android:name=".add_workout.ChooseWarmupExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.InputWarmupExerciseActivity"/>
         </activity>
-        <activity android:name=".add_workout.ChooseMainExerciseActivity">
+        <activity android:name=".add_workout.ChooseMainExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.InputMainExerciseActivity"/>
         </activity>
-        <activity android:name=".view_check_ins.ChooseBlockActivity">
+        <activity android:name=".view_check_ins.ChooseBlockActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_check_ins.ViewCheckInsActivity"/>
         </activity>
-        <activity android:name=".add_workout.InputWarmupExerciseActivity">
+        <activity android:name=".add_workout.InputWarmupExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddWeekToBlockActivity"/>
         </activity>
-        <activity android:name=".add_workout.InputMainExerciseActivity">
+        <activity android:name=".add_workout.InputMainExerciseActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".add_workout.AddWeekToBlockActivity"/>
